@@ -8,4 +8,4 @@
 
  jobs:
   coverage:
-    uses: "oleksiikolomiietssnapp/swift-coverage-workflows/.github/workflows/swift-coverage.yml@main"
+    uses: "oleksiikolomiietssnapp/swift-coverage-action/.github/workflows/swift-coverage.yml@main"
