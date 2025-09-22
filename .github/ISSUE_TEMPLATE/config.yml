@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 📖 Documentation
+    url: https://github.com/SnappDesignTokens/SnappDesignTokens/blob/main/README.md
+    about: Check the documentation for setup instructions and usage examples
+  - name: 💬 Discussions
+    url: https://github.com/SnappDesignTokens/SnappDesignTokens/discussions
+    about: Join community discussions, share ideas, and get help from other users
+  - name: 🎨 DTCG Specification
+    url: https://design-tokens.github.io/community-group/format/
+    about: Official Design Tokens Community Group format specification
+  - name: 🛠️ Swift Package Manager
+    url: https://swift.org/package-manager/
+    about: Learn more about Swift Package Manager and package integration

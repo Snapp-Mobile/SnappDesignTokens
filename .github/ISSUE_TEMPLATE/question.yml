@@ -1,0 +1,147 @@
+name: ❓ Question
+description: Ask a question about SnappDesignTokens usage, implementation, or DTCG tokens
+title: "[Question]: "
+labels: ["question", "needs-response"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for your question! Please provide as much context as possible so we can give you the best answer.
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Your Question
+      description: What would you like to know about SnappDesignTokens?
+      placeholder: How do I... ? / What's the best way to... ? / Is it possible to... ?
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Question Category
+      description: What category does your question fall into?
+      options:
+        - Getting Started / Setup
+        - DTCG Token Format
+        - Parsing and Usage
+        - Token Types and Values
+        - Reference Resolution
+        - Swift Integration
+        - Performance
+        - Best Practices
+        - Troubleshooting
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context and Background
+      description: Provide any relevant context about what you're trying to achieve.
+      placeholder: I'm working on... / My goal is to... / I'm trying to integrate with...
+    validations:
+      required: true
+
+  - type: textarea
+    id: current-code
+    attributes:
+      label: Current Code/Approach (Optional)
+      description: If you have existing code or have tried something, please share it here.
+      placeholder: |
+        ```swift
+        // Your current code or approach
+        let tokens = TokenParser()
+        // ...
+        ```
+      render: swift
+    validations:
+      required: false
+
+  - type: textarea
+    id: dtcg-tokens
+    attributes:
+      label: DTCG Tokens Example (Optional)
+      description: If your question relates to specific DTCG tokens, please provide an example.
+      placeholder: |
+        ```json
+        {
+          "color": {
+            "primary": {
+              "$type": "color",
+              "$value": "#007AFF"
+            }
+          }
+        }
+        ```
+      render: json
+    validations:
+      required: false
+
+  - type: textarea
+    id: what-tried
+    attributes:
+      label: What Have You Tried?
+      description: Have you already tried any solutions or consulted any documentation?
+      placeholder: I've looked at... / I tried... / I checked the documentation but...
+    validations:
+      required: false
+
+  - type: input
+    id: swift-version
+    attributes:
+      label: Swift Version (Optional)
+      description: What version of Swift are you using?
+      placeholder: e.g., 5.9, 5.10
+    validations:
+      required: false
+
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform (Optional)
+      description: Which platform are you targeting?
+      multiple: true
+      options:
+        - iOS
+        - macOS
+        - watchOS
+        - tvOS
+        - Linux
+        - Not platform-specific
+    validations:
+      required: false
+
+  - type: textarea
+    id: expected-outcome
+    attributes:
+      label: Expected Outcome
+      description: What outcome are you hoping to achieve?
+      placeholder: I want to be able to... / The result should be... / I expect...
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: Additional Information
+      description: Any other information that might be helpful for answering your question.
+      placeholder: Related links, specifications, similar libraries you've used, etc.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Verification
+      description: Please verify the following before submitting your question.
+      options:
+        - label: I have searched existing issues and discussions for similar questions
+          required: true
+        - label: I have provided sufficient context and details about my question
+          required: true
+        - label: This question is specifically related to SnappDesignTokens or DTCG tokens
+          required: true
