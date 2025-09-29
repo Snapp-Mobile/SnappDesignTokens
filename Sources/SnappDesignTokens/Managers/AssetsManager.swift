@@ -29,7 +29,7 @@ public actor AssetsManager {
         self.cacheRootURL = rootURL
         let imageCacheRootURL = rootURL.appendingPathComponent(themeName).appendingPathComponent(imagesFolderName)
         self.imageCacheRootURL = imageCacheRootURL
-        if !fileManager.fileExists(atPath: imageCacheRootURL.path(), isDirectory: &isDirectory) {
+        if !fileManager.fileExists(atPath: imageCacheRootURL.absoluteString, isDirectory: &isDirectory) {
             do {
                 try fileManager.createDirectory(at: imageCacheRootURL, withIntermediateDirectories: true)
             } catch {
@@ -38,7 +38,7 @@ public actor AssetsManager {
         }
         let fontCacheRootURL = rootURL.appendingPathComponent(themeName).appendingPathComponent(fontsFolderName)
         self.fontCacheRootURL = fontCacheRootURL
-        if !fileManager.fileExists(atPath: fontCacheRootURL.path(), isDirectory: &isDirectory) {
+        if !fileManager.fileExists(atPath: fontCacheRootURL.absoluteString, isDirectory: &isDirectory) {
             do {
                 try fileManager.createDirectory(at: fontCacheRootURL, withIntermediateDirectories: true)
             } catch {
