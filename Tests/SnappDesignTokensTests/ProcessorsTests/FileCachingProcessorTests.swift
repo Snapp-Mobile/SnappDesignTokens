@@ -42,8 +42,8 @@ struct FileCachingProcessorTests {
     @Test(
         .dtcgDecoder(with: .init(file: .init(source: .alienDirectory)))
     ) func testCachingRelativePath() async throws {
-        let inputFileURL: URL = try #require(.alien)
-        let token = try inputFileURL.absoluteString.decodeTokenOfType(
+        let relativePath = "alien.svg"
+        let token = try relativePath.decodeTokenOfType(
             .file,
             wrapInParenthesis: true
         )
