@@ -6,10 +6,32 @@
 
 import Foundation
 
+/// Processor that flattens nested token groups into a single-level dictionary.
+///
+/// Converts hierarchical token structures into flat key-value pairs using
+/// configurable path naming strategies (dot-separated, camelCase, snake_case).
+/// Supports optional depth limiting to preserve specific group levels.
+///
+/// Example:
+/// ```swift
+/// // Input: { "color": { "primary": { "base": "#ff0000" } } }
+///
+/// let processor: TokenProcessor = .flatten(pathConversionStrategy: .dotSeparated)
+/// let flattened = try await processor.process(token)
+/// // Output: { "color.primary.base": "#ff0000" }
+/// ```
 public struct FlattenProcessor: TokenProcessor {
+    /// Strategy for converting token paths to flat keys as ``PathConversionStrategy``.
     public let pathConversionStrategy: PathConversionStrategy
+
+    /// Maximum flattening depth as ``FlatteningDepth``.
     public let flatteningDepth: FlatteningDepth
 
+    /// Creates a flatten processor.
+    ///
+    /// - Parameters:
+    ///   - pathConversionStrategy: Path naming strategy (default: `.dotSeparated`)
+    ///   - flatteningDepth: Depth limit (default: `.unlimited`)
     public init(
         pathConversionStrategy: PathConversionStrategy = .dotSeparated,
         flatteningDepth: FlatteningDepth = .unlimited
@@ -18,6 +40,12 @@ public struct FlattenProcessor: TokenProcessor {
         self.flatteningDepth = flatteningDepth
     }
 
+    /// Flattens token group hierarchy into single-level dictionary.
+    ///
+    /// Returns token unchanged if not a group token.
+    ///
+    /// - Parameter token: Token tree to flatten
+    /// - Returns: Flattened token group with combined path keys
     public func process(_ token: Token) async throws -> Token {
         guard case var .group(group) = token else {
             return token
@@ -44,16 +72,47 @@ public struct FlattenProcessor: TokenProcessor {
 }
 
 extension FlattenProcessor {
+    /// Strategy for converting hierarchical token paths to flat key names.
+    ///
+    /// Determines how nested group paths are combined into single keys.
+    ///
+    /// Example:
+    /// ```swift
+    /// // Path: ["color", "primary", "base"]
+    /// // .joined(separator: ".") => "color.primary.base"
+    /// // .convertToCamelCase => "colorPrimaryBase"
+    /// // .convertToSnakeCase => "color_primary_base"
+    /// ```
     public enum PathConversionStrategy: Sendable, Equatable {
+        /// Joins path segments with specified separator.
+        ///
+        /// - Parameter separator: String to insert between segments (default: `"."`)
         case joined(separator: String = ".")
+
+        /// Converts path to camelCase.
+        ///
+        /// First segment lowercased, subsequent segments capitalized.
         case convertToCamelCase
+
+        /// Converts path to snake_case.
+        ///
+        /// All segments lowercased, joined with underscores.
         case convertToSnakeCase
 
+        /// Dot-separated path strategy (convenience for `.joined()`).
         public static let dotSeparated: Self = .joined()
     }
 
+    /// Controls how deeply nested groups are flattened.
+    ///
+    /// Enables preserving specific group structures while flattening others.
     public enum FlatteningDepth: Sendable {
+        /// Flattens all nested groups without limit.
         case unlimited
+
+        /// Stops flattening when condition returns `true` for a group.
+        ///
+        /// - Parameter condition: Closure evaluating whether to preserve group structure
         case limitWhere(_ condition: @Sendable (TokenGroup) -> Bool)
     }
 }
@@ -95,6 +154,12 @@ extension FlattenProcessor.PathConversionStrategy {
 }
 
 extension TokenProcessor where Self == FlattenProcessor {
+    /// Creates a flatten processor with specified configuration.
+    ///
+    /// - Parameters:
+    ///   - pathConversionStrategy: Path naming strategy (default: `.dotSeparated`)
+    ///   - flatteningDepth: Depth limit (default: `.unlimited`)
+    /// - Returns: Configured ``FlattenProcessor``
     public static func flatten(
         pathConversionStrategy: Self.PathConversionStrategy = .dotSeparated,
         flatteningDepth: Self.FlatteningDepth = .unlimited
@@ -105,5 +170,6 @@ extension TokenProcessor where Self == FlattenProcessor {
         )
     }
 
+    /// Flatten processor with dot-separated path strategy (convenience accessor).
     public static var flattenDotSeparated: Self { .flatten() }
 }
