@@ -6,11 +6,15 @@
 
 import Foundation
 
+/// Configuration for color value encoding format.
 public enum ColorValueEncodingConfiguration: Equatable, Sendable {
-    /// Design Token Color format:
-    /// https://tr.designtokens.org/color/#format
+    /// DTCG color format with explicit color space and components.
+    ///
+    /// Per DTCG specification: https://tr.designtokens.org/color/#format
     case `default`
-    /// 8 digits HEX using RGB Hexadecimal Notations:
-    /// https://www.w3.org/TR/css-color-4/#hex-notation
+
+    /// 8-digit hex format using RGB hexadecimal notation.
+    ///
+    /// Per CSS Color Module Level 4: https://www.w3.org/TR/css-color-4/#hex-notation
     case hex
 }
