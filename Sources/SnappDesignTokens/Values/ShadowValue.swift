@@ -6,23 +6,24 @@
 
 import Foundation
 
-/// Represents a value of shadow style for design tokens.
+/// Represents a single shadow layer.
 ///
-/// This structure conforms to the Design Tokens Community Group (DTCG) specification for value of shadow tokens, supporting both drop shadows and inner shadows with configurable properties.
+/// DTCG composite token defining drop shadows and inner shadows. Multiple ``ShadowValue``
+/// instances can be layered to create complex shadow effects. Each property supports both
+/// direct values and token aliases.
 ///
-/// ### Usage
+/// Example:
 /// ```swift
-/// // Create a drop shadow
-/// let color = try ColorValue(hex: "#000000")
+/// // Drop shadow
 /// let dropShadow = ShadowValue(
-///     color: .value(color),
+///     color: .value(try ColorValue(hex: "#000000")),
 ///     offsetX: .value(DimensionValue(value: 2, unit: .px)),
 ///     offsetY: .value(DimensionValue(value: 4, unit: .px)),
 ///     blur: .value(DimensionValue(value: 8, unit: .px)),
 ///     spread: .value(DimensionValue(value: 0, unit: .px))
 /// )
 ///
-/// // Create an inner shadow
+/// // Inner shadow
 /// let innerShadow = ShadowValue(
 ///     color: .alias(TokenPath("shadow.inner.color")),
 ///     offsetX: .value(DimensionValue(value: 0, unit: .px)),
@@ -33,50 +34,43 @@ import Foundation
 /// )
 /// ```
 public struct ShadowValue: Codable, Equatable, Sendable, CompositeToken {
-    /// The color of the shadow.
-    ///
-    /// The value of this property MUST be a valid color value or a reference to a color token.
+    /// Shadow color as ``CompositeTokenValue`` of ``ColorValue``.
     public let color: CompositeTokenValue<ColorValue>
 
-    /// The horizontal offset that shadow has from the element it is applied to.
+    /// Horizontal shadow offset as ``CompositeTokenValue`` of ``DimensionValue``.
     ///
-    /// The value of this property MUST be a valid dimension value or a reference to a dimension token.
-    /// Positive values move the shadow to the right, negative values move it to the left.
+    /// Positive values move shadow right, negative values move left.
     public let offsetX: CompositeTokenValue<DimensionValue>
 
-    /// The vertical offset that shadow has from the element it is applied to.
+    /// Vertical shadow offset as ``CompositeTokenValue`` of ``DimensionValue``.
     ///
-    /// The value of this property MUST be a valid dimension value or a reference to a dimension token.
-    /// Positive values move the shadow downward, negative values move it upward.
+    /// Positive values move shadow down, negative values move up.
     public let offsetY: CompositeTokenValue<DimensionValue>
 
-    /// The blur radius that is applied to the shadow.
+    /// Blur radius as ``CompositeTokenValue`` of ``DimensionValue``.
     ///
-    /// The value of this property MUST be a valid dimension value or a reference to a dimension token.
-    /// Higher values create more blurred shadows, while a value of 0 creates a sharp shadow.
+    /// Higher values create more blur, 0 creates sharp shadow.
     public let blur: CompositeTokenValue<DimensionValue>
 
-    /// The amount by which to expand or contract the shadow.
+    /// Shadow expansion/contraction as ``CompositeTokenValue`` of ``DimensionValue``.
     ///
-    /// The value of this property MUST be a valid dimension value or a reference to a dimension token.
-    /// Positive values expand the shadow, negative values contract it.
+    /// Positive values expand shadow, negative values contract it.
     public let spread: CompositeTokenValue<DimensionValue>
 
-    /// Whether this shadow is inside the containing shape ("inner shadow").
+    /// Whether shadow renders inside the container (inner shadow).
     ///
-    /// When `true`, creates an inner shadow rendered inside the container.
-    /// When `false` or `nil` (default), creates a drop shadow or box shadow rendered outside the container.
+    /// When `true`, creates inner shadow. When `false` or `nil` (default), creates drop shadow.
     public let inset: Bool?
 
-    /// Creates a new `ShadowValue` value with the specified properties.
+    /// Creates a shadow with the specified properties.
     ///
     /// - Parameters:
-    ///   - color: The color of the shadow
-    ///   - offsetX: The horizontal offset of the shadow
-    ///   - offsetY: The vertical offset of the shadow
-    ///   - blur: The blur radius applied to the shadow
-    ///   - spread: The amount by which to expand or contract the shadow
-    ///   - inset: Whether this is an inner shadow (default: `nil` for drop shadow)
+    ///   - color: Shadow color
+    ///   - offsetX: Horizontal offset
+    ///   - offsetY: Vertical offset
+    ///   - blur: Blur radius
+    ///   - spread: Expansion/contraction amount
+    ///   - inset: Whether inner shadow (default: `nil` for drop shadow)
     public init(
         color: CompositeTokenValue<ColorValue>,
         offsetX: CompositeTokenValue<DimensionValue>,
@@ -93,10 +87,10 @@ public struct ShadowValue: Codable, Equatable, Sendable, CompositeToken {
         self.inset = inset
     }
 
-    /// Creates a `ShadowValue` by decoding from the given decoder.
+    /// Decodes all shadow properties.
     ///
-    /// - Parameter decoder: The decoder to read data from
-    /// - Throws: `DecodingError` if the data is corrupted or if any required values are missing
+    /// - Parameter decoder: Decoder to read data from
+    /// - Throws: ``DecodingError`` if any required property is missing or invalid
     public init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.color = try container.decode(CompositeTokenValue<ColorValue>.self, forKey: .color)
@@ -107,10 +101,12 @@ public struct ShadowValue: Codable, Equatable, Sendable, CompositeToken {
         self.inset = try container.decodeIfPresent(Bool.self, forKey: .inset)
     }
 
-    /// Resolves all alias references within this shadow value using the provided root token.
+    /// Resolves all token aliases to their actual values.
     ///
-    /// - Parameter root: The root design token containing all token definitions
-    /// - Throws: `Error` if any alias references cannot be resolved
+    /// Traverses each property to resolve any `{group.token}` references.
+    ///
+    /// - Parameter root: Root token containing the complete token tree for lookups
+    /// - Throws: Error if any alias cannot be resolved or type mismatch occurs
     public mutating func resolveAliases(root: Token) throws {
         self = .init(
             color: try color.resolvingAliases(root: root),
@@ -131,10 +127,10 @@ public struct ShadowValue: Codable, Equatable, Sendable, CompositeToken {
         case inset
     }
 
-    /// Encodes this `ShadowValue` into the given encoder.
+    /// Encodes all shadow properties.
     ///
-    /// - Parameter encoder: The encoder to write data to
-    /// - Throws: `EncodingError` if any values are invalid for the given encoder's format
+    /// - Parameter encoder: Encoder to write data to
+    /// - Throws: ``EncodingError`` if any values are invalid for the given encoder's format
     public func encode(to encoder: any Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(self.color, forKey: .color)
