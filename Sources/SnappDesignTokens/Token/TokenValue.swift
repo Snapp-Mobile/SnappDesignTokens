@@ -6,24 +6,65 @@
 
 import Foundation
 
+/// Represents the actual value of a design token.
+///
+/// Each case corresponds to a DTCG token type with its specific value structure.
+/// Token values are decoded based on the token's type property, which can be
+/// set directly, inherited from a parent group, or mapped via custom type configuration.
 public enum TokenValue: Decodable, DecodableWithConfiguration, Encodable,
     EncodableWithConfiguration, Equatable, Sendable
 {
+    /// Color token value.
     case color(ColorValue)
+
+    /// Dimension token value (width, height, position).
     case dimension(DimensionValue)
+
+    /// File reference token value.
     case file(FileValue)
+
+    /// Font family name token value.
     case fontFamily(FontFamilyValue)
+
+    /// Font weight token value.
     case fontWeight(FontWeightValue)
+
+    /// Numeric token value without units.
     case number(NumberValue)
-    case typography(TypographyValue)
-    case gradient(GradientValue)
+
+    /// Time duration token value for animations.
     case duration(DurationValue)
-    case shadow(TokenCollection<ShadowValue>)
-    case strokeStyle(StrokeStyleValue)
-    case border(BorderValue)
+
+    /// Animation timing curve token value.
     case cubicBezier(CubicBezierValue)
+
+    /// Typography token value with complete text styling.
+    case typography(TypographyValue)
+
+    /// Gradient token value with color transitions.
+    case gradient(GradientValue)
+
+    /// Shadow effect token value.
+    case shadow(TokenCollection<ShadowValue>)
+
+    /// Stroke style token value for lines and borders.
+    case strokeStyle(StrokeStyleValue)
+
+    /// Border token value with color, width, and style.
+    case border(BorderValue)
+
+    /// Transition token value for animated state changes.
     case transition(TransitionValue)
 
+    /// Decodes a token value using the specified configuration.
+    ///
+    /// The value structure is determined by the token type from the configuration.
+    /// Custom type mappings are applied before decoding if provided.
+    ///
+    /// - Parameters:
+    ///   - decoder: Decoder to read data from
+    ///   - configuration: Configuration specifying token type and decoding options
+    /// - Throws: ``DecodingError`` if type is not specified or value structure is invalid
     public init(
         from decoder: any Decoder,
         configuration: TokenValueDecodingConfiguration
@@ -99,6 +140,11 @@ public enum TokenValue: Decodable, DecodableWithConfiguration, Encodable,
         )
     }
 
+    /// Encodes the token value using the specified configuration.
+    ///
+    /// - Parameters:
+    ///   - encoder: Encoder to write data to
+    ///   - configuration: Configuration specifying encoding options per type
     public func encode(
         to encoder: any Encoder,
         configuration: TokenValueEncodingConfiguration
@@ -141,6 +187,7 @@ public enum TokenValue: Decodable, DecodableWithConfiguration, Encodable,
 }
 
 extension TokenValue {
+    /// The token type corresponding to this value.
     var tokenType: TokenType {
         switch self {
         case .color: .color
