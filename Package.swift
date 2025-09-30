@@ -1,9 +1,13 @@
-// swift-tools-version: 6.0.3
+// swift-tools-version: 6.1
 
 import PackageDescription
 
 let package = Package(
     name: "SnappDesignTokens",
+    platforms: [
+        .iOS(.v16),
+        .macOS(.v13),
+    ],
     products: [
         .library(
             name: "SnappDesignTokens",
@@ -14,9 +18,13 @@ let package = Package(
         .target(
             name: "SnappDesignTokens"
         ),
+        .target(name: "SnappDesignTokensTestUtils", dependencies: ["SnappDesignTokens"]),
         .testTarget(
             name: "SnappDesignTokensTests",
-            dependencies: ["SnappDesignTokens"]
+            dependencies: ["SnappDesignTokens", "SnappDesignTokensTestUtils"],
+            resources: [
+                .copy("Resources/alien.svg"),
+            ]
         ),
     ]
 )
