@@ -6,6 +6,33 @@
 
 import Foundation
 
+/// Represents a color token value across different color spaces.
+///
+/// DTCG primitive token enabling standardized color representation and translation
+/// between design and development tools. Supports 13+ color spaces including sRGB,
+/// Display P3, HSL, Lab, and more. Components can use numeric values or the "none"
+/// keyword for missing channels.
+///
+/// Example:
+/// ```swift
+/// // Hex string format (sRGB)
+/// let red = try ColorValue(hex: "#FF0000")
+///
+/// // Structured format with color space
+/// let hslWhite = ColorValue(
+///     colorSpace: .hsl,
+///     components: [.none, 0, 100],
+///     alpha: 1,
+///     hex: "#ffffff"
+/// )
+///
+/// // Lab color space
+/// let labMagenta = ColorValue(
+///     colorSpace: .lab,
+///     components: [60.17, 93.54, -60.5],
+///     hex: "#ff00ff"
+/// )
+/// ```
 public struct ColorValue: Codable, EncodableWithConfiguration, Equatable,
     Sendable
 {
@@ -16,11 +43,42 @@ public struct ColorValue: Codable, EncodableWithConfiguration, Equatable,
         case hex
     }
 
+    /// Color space defining how component values are interpreted.
+    ///
+    /// Determines the gamut and interpretation of ``components``. See ``TokenColorSpace``
+    /// for supported color spaces including sRGB, Display P3, HSL, Lab, and more.
     public let colorSpace: TokenColorSpace
+
+    /// Array of color component values for the specified color space.
+    ///
+    /// Number and interpretation of components depends on ``colorSpace``:
+    /// - RGB spaces (sRGB, Display P3, etc.): `[red, green, blue]`
+    /// - HSL: `[hue, saturation, lightness]`
+    /// - Lab/Oklab: `[lightness, a, b]`
+    /// - LCH/Oklch: `[lightness, chroma, hue]`
+    ///
+    /// Components can be ``ColorComponent/value(_:)`` or ``ColorComponent/none`` for
+    /// missing/undefined channels.
     public let components: [ColorComponent]
+
+    /// Opacity value from 0.0 (fully transparent) to 1.0 (fully opaque).
+    ///
+    /// Per DTCG specification, defaults to 1.0 (fully opaque) when not specified.
     public let alpha: Double
+
+    /// Optional hex string fallback using CSS 6-digit notation.
+    ///
+    /// Used for sRGB colors (e.g., `"#FF0000"` for red) or as closest sRGB approximation
+    /// for other color spaces. Preserved during round-trip encoding/decoding.
     public let hex: String?
 
+    /// Creates a color value with the specified color space and components.
+    ///
+    /// - Parameters:
+    ///   - colorSpace: Color space defining component interpretation
+    ///   - components: Array of color component values
+    ///   - alpha: Opacity (0.0-1.0), defaults to 1.0
+    ///   - hex: Optional hex string representation
     public init(
         colorSpace: TokenColorSpace,
         components: [ColorComponent],
@@ -70,6 +128,10 @@ public struct ColorValue: Codable, EncodableWithConfiguration, Equatable,
 
     }
 
+    /// Encodes the color value using the encoder's configuration.
+    ///
+    /// - Parameter encoder: Encoder to write data to
+    /// - Throws: Error if encoding fails
     public func encode(to encoder: any Encoder) throws {
         try self.encode(
             to: encoder,
@@ -79,6 +141,12 @@ public struct ColorValue: Codable, EncodableWithConfiguration, Equatable,
         )
     }
 
+    /// Encodes the color value with the specified configuration.
+    ///
+    /// - Parameters:
+    ///   - encoder: Encoder to write data to
+    ///   - configuration: Encoding format (`.default` for structured, `.hex` for hex string)
+    /// - Throws: Error if encoding fails
     public func encode(
         to encoder: any Encoder,
         configuration: ColorValueEncodingConfiguration
