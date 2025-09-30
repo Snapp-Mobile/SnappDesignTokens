@@ -6,23 +6,47 @@
 
 import Foundation
 
+/// Error thrown when decoding an invalid hex color string.
 public enum ColorValueHexDecodingError: Error, Equatable, Sendable {
+    /// Hex string format is invalid (must be #RRGGBB or #RRGGBBAA).
     case invalidHEX(String)
 }
 
+/// Error thrown when encoding a color value to hex format.
 public enum ColorValueHexEncodingError: Error, Equatable, Sendable {
+    /// Color space is not sRGB (only sRGB supports hex encoding).
     case unsupportedColorSpace(TokenColorSpace)
+
+    /// One or more components use "none" keyword instead of numeric values.
     case invalidComponents([ColorComponent])
 }
 
+/// Hex color string format for alpha channel placement.
 public enum ColorHexFormat: Equatable, Sendable {
+    /// Default format (RGBA).
     public static let `default`: ColorHexFormat = .rgba
 
+    /// Alpha-Red-Green-Blue format (#AARRGGBB).
     case argb
+
+    /// Red-Green-Blue-Alpha format (#RRGGBBAA).
     case rgba
 }
 
 extension ColorValue {
+    /// Creates a color from a hex string.
+    ///
+    /// Parses hex color strings in #RRGGBB or #RRGGBBAA format (6 or 8 hex digits).
+    /// Resulting color uses sRGB color space. Alpha defaults to 1.0 for 6-digit format.
+    ///
+    /// Example:
+    /// ```swift
+    /// let red = try ColorValue(hex: "#FF0000")
+    /// let semiTransparent = try ColorValue(hex: "#FF0000FF")
+    /// ```
+    ///
+    /// - Parameter hexString: Hex color string starting with #
+    /// - Throws: ``ColorValueHexDecodingError/invalidHEX(_:)`` if format is invalid
     public init(hex hexString: String) throws {
         guard hexString.hasPrefix("#") else {
             throw ColorValueHexDecodingError.invalidHEX(hexString)
@@ -62,6 +86,21 @@ extension ColorValue {
         )
     }
 
+    /// Converts color to hex string representation.
+    ///
+    /// Only sRGB colors with numeric components can be converted to hex format.
+    ///
+    /// Example:
+    /// ```swift
+    /// let hex = try ColorValue.red.hex()  // "#FF0000"
+    /// let argb = try ColorValue.red.hex(format: .argb)  // "#FFFF0000"
+    /// ```
+    ///
+    /// - Parameters:
+    ///   - format: Alpha channel placement (default: ``.rgba``)
+    ///   - skipFullOpacityAlpha: Omit alpha when fully opaque (default: `false`)
+    /// - Returns: Hex color string
+    /// - Throws: ``ColorValueHexEncodingError`` if color space is not sRGB or components contain "none"
     public func hex(
         format: ColorHexFormat = .default,
         skipFullOpacityAlpha: Bool = false
