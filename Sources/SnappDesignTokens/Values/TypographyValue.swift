@@ -6,13 +6,43 @@
 
 import Foundation
 
+/// Represents a complete typographic style.
+///
+/// DTCG composite token combining five required text-related properties. Each property
+/// supports both direct values and token aliases for flexible design system composition.
+///
+/// Example:
+/// ```swift
+/// let heading = TypographyValue(
+///     fontFamily: .value(.init("Helvetica")),
+///     fontSize: .value(.constant(.init(value: 16, unit: .px))),
+///     fontWeight: .value(.bold),
+///     letterSpacing: .value(.constant(.init(value: 0.1, unit: .px))),
+///     lineHeight: .value(1.2)
+/// )
+/// ```
 public struct TypographyValue: Codable, Equatable, Sendable, CompositeToken {
+    /// Font family as ``CompositeTokenValue`` of ``FontFamilyValue``.
     public let fontFamily: CompositeTokenValue<FontFamilyValue>
+
+    /// Font size as ``CompositeTokenValue`` of ``DimensionValue``.
     public let fontSize: CompositeTokenValue<DimensionValue>
+
+    /// Font weight as ``CompositeTokenValue`` of ``FontWeightValue``.
     public let fontWeight: CompositeTokenValue<FontWeightValue>
+
+    /// Letter spacing as ``CompositeTokenValue`` of ``DimensionValue``.
     public let letterSpacing: CompositeTokenValue<DimensionValue>
+
+    /// Line height as ``CompositeTokenValue`` of ``NumberValue``.
+    ///
+    /// Interpreted as a multiplier of the font size.
     public let lineHeight: CompositeTokenValue<NumberValue>
 
+    /// Decodes all five typography properties.
+    ///
+    /// - Parameter decoder: Decoder to read data from
+    /// - Throws: ``DecodingError`` if any required property is missing or invalid
     public init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.fontFamily = try container.decode(
@@ -37,6 +67,14 @@ public struct TypographyValue: Codable, Equatable, Sendable, CompositeToken {
         )
     }
 
+    /// Creates a typography value with all required properties.
+    ///
+    /// - Parameters:
+    ///   - fontFamily: Font family name or reference
+    ///   - fontSize: Text size
+    ///   - fontWeight: Font thickness
+    ///   - letterSpacing: Horizontal character spacing
+    ///   - lineHeight: Vertical line spacing (multiplier of font size)
     public init(
         fontFamily: CompositeTokenValue<FontFamilyValue>,
         fontSize: CompositeTokenValue<DimensionValue>,
@@ -51,6 +89,12 @@ public struct TypographyValue: Codable, Equatable, Sendable, CompositeToken {
         self.lineHeight = lineHeight
     }
 
+    /// Resolves all token aliases to their actual values.
+    ///
+    /// Traverses each property to resolve any `{group.token}` references.
+    ///
+    /// - Parameter root: Root token containing the complete token tree for lookups
+    /// - Throws: Error if any alias cannot be resolved or type mismatch occurs
     public mutating func resolveAliases(root: Token) throws {
         self = .init(
             fontFamily: try fontFamily.resolvingAliases(root: root),
