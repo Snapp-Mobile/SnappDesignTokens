@@ -7,6 +7,9 @@
 import Foundation
 
 extension TokenValue {
+    /// Type-erased value for the token.
+    ///
+    /// Returns the underlying value as `Any`, useful for generic operations and type casting.
     public var anyValue: Any {
         switch self {
         case .color(let value):

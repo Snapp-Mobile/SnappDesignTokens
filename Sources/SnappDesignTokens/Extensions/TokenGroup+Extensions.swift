@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  TokenGroup+Extensions.swift
 //
 //  Created by Oleksii Kolomiiets on 05.03.2025.
 //
@@ -8,10 +8,28 @@ import Foundation
 import OSLog
  
 extension TokenGroup {
+    /// Resolves an alias reference to its actual token value.
+    ///
+    /// Traverses the group following the path to find the referenced token.
+    ///
+    /// - Parameter path: Token path to resolve
+    /// - Returns: Resolved token value
+    /// - Throws: ``TokenResolutionError`` if path is invalid or references don't exist
     public func resolveAlias(_ path: TokenPath) throws -> Token {
         try resolveAlias(path, root: .group(self), visited: [path])
     }
 
+    /// Resolves an alias reference with circular reference detection.
+    ///
+    /// Internal method tracking visited paths to detect circular references. Walks through
+    /// the path segments, resolving nested groups and following alias chains.
+    ///
+    /// - Parameters:
+    ///   - path: Token path to resolve
+    ///   - root: Root token for lookups
+    ///   - visitedPaths: Set of paths already visited (for circular reference detection)
+    /// - Returns: Resolved token value
+    /// - Throws: ``TokenResolutionError`` if resolution fails
     public func resolveAlias(
         _ path: TokenPath,
         root: Token,
@@ -46,6 +64,13 @@ extension TokenGroup {
         }
     }
 
+    /// Transforms all tokens in the group using the provided closure.
+    ///
+    /// Recursively applies transformation to all tokens in the group.
+    ///
+    /// - Parameter transformation: Closure transforming individual tokens
+    /// - Returns: Transformed token group
+    /// - Throws: Rethrows errors from transformation closure
     public func map(
         _ transformation: (_ element: Token) throws -> Token
     ) rethrows -> TokenGroup {
@@ -56,6 +81,13 @@ extension TokenGroup {
         return group
     }
 
+    /// Deeply merges another token group into this one.
+    ///
+    /// Mutating version of ``deepMerging(_:uniquingKeysWith:)``.
+    ///
+    /// - Parameters:
+    ///   - other: Token group to merge
+    ///   - combine: Closure resolving conflicts for duplicate keys
     public mutating func deepMerge(
         _ other: TokenGroup,
         uniquingKeysWith combine: (Token, Token) -> Token
@@ -63,6 +95,14 @@ extension TokenGroup {
         self = deepMerging(other, uniquingKeysWith: combine)
     }
 
+    /// Deeply merges another token group, returning a new group.
+    ///
+    /// Recursively merges nested groups. For duplicate keys, uses combine closure to resolve.
+    ///
+    /// - Parameters:
+    ///   - other: Token group to merge
+    ///   - combine: Closure resolving conflicts for duplicate keys
+    /// - Returns: Merged token group
     public func deepMerging(
         _ other: TokenGroup,
         uniquingKeysWith combine: (Token, Token) -> Token
