@@ -14,8 +14,6 @@ import Foundation
 public enum TokenValue: Decodable, DecodableWithConfiguration, Encodable,
     EncodableWithConfiguration, Equatable, Sendable
 {
-    // MARK: - Primitive Types
-
     /// Color token value.
     case color(ColorValue)
 
@@ -39,8 +37,6 @@ public enum TokenValue: Decodable, DecodableWithConfiguration, Encodable,
 
     /// Animation timing curve token value.
     case cubicBezier(CubicBezierValue)
-
-    // MARK: - Composite Types
 
     /// Typography token value with complete text styling.
     case typography(TypographyValue)

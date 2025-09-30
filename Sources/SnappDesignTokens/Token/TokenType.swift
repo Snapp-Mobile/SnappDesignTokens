@@ -12,7 +12,7 @@ import Foundation
 /// The type can be set directly on a token, inherited from a parent group, or determined
 /// by a referenced token's type.
 ///
-/// Example usage:
+/// Example:
 /// ```swift
 /// let colorType = TokenType.color
 /// let customType = TokenType(rawValue: "customType")
@@ -34,8 +34,6 @@ public struct TokenType: RawRepresentable, Codable, Sendable, Equatable, Hashabl
 }
 
 extension TokenType {
-    // MARK: - Primitive Types
-
     /// Represents a color in the UI.
     public static let color = Self(rawValue: "color")
 
@@ -59,8 +57,6 @@ extension TokenType {
 
     /// Represents animation timing/progression curves.
     public static let cubicBezier = Self(rawValue: "cubicBezier")
-
-    // MARK: - Composite Types
 
     /// Represents complete text styling properties.
     public static let typography = Self(rawValue: "typography")
