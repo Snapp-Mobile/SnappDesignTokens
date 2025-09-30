@@ -7,15 +7,49 @@
 import Foundation
 import OSLog
 
+/// Represents a design token as defined by the DTCG specification.
+///
+/// A token is the core data structure for design system information. Tokens can represent
+/// concrete values, hierarchical groups, references to other tokens, arrays, or unknown data.
+///
+/// Examples:
+/// ```swift
+/// // Value token
+/// let token: Token = .value(.color(.red))
+///
+/// // Group token with nested structure
+/// let token: Token = .group([
+///     "primary": .value(.color(.red)),
+///     "spacing": .group([
+///         "small": .value(.dimension(.constant(.init(value: 8, unit: .px))))
+///     ])
+/// ])
+///
+/// // Alias token referencing another token
+/// let token: Token = .alias(TokenPath("color", "primary"))
+///
+/// // Array token
+/// let token: Token = .array([.unknown("metadata")])
+/// ```
 public enum Token: DecodableWithConfiguration, Decodable,
     Encodable, EncodableWithConfiguration, Equatable, Sendable
 {
+    /// Represents an unknown or null token value.
     public static let unknown: Self = .unknown(UnknownToken(rawValue: nil))
 
+    /// Token with a concrete value (color, dimension, etc.).
     case value(TokenValue)
+
+    /// Token group containing nested tokens.
     case group(TokenGroup)
+
+    /// Token alias referencing another token's value.
     case alias(TokenPath)
+
+    /// Unknown or invalid token that preserves raw data.
     case unknown(UnknownToken)
+
+    /// Array of tokens.
     case array(TokenArray)
 
     enum CodingKeys: String, CodingKey {
@@ -23,6 +57,15 @@ public enum Token: DecodableWithConfiguration, Decodable,
         case value = "$value"
     }
 
+    /// Decodes a token using the specified configuration.
+    ///
+    /// Attempts to decode in order: value token (with `$value` key), array, group, or unknown.
+    /// Type information is inherited from parent groups or custom type mappings.
+    ///
+    /// - Parameters:
+    ///   - decoder: Decoder to read data from
+    ///   - configuration: Configuration including parent type and custom mappings
+    /// - Throws: ``DecodingError`` if decoding fails
     public init(
         from decoder: any Decoder,
         configuration: TokenDecodingConfiguration
@@ -89,6 +132,12 @@ public enum Token: DecodableWithConfiguration, Decodable,
         )
     }
 
+    /// Encodes the token using the specified configuration.
+    ///
+    /// - Parameters:
+    ///   - encoder: Encoder to write data to
+    ///   - configuration: Configuration specifying encoding options
+    /// - Throws: Error if encoding fails
     public func encode(
         to encoder: any Encoder,
         configuration: TokenEncodingConfiguration
