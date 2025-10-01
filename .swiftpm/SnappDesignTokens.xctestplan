@@ -1,0 +1,38 @@
+{
+  "configurations" : [
+    {
+      "id" : "B5DC7653-362E-43B7-8800-465F78213067",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:",
+          "identifier" : "SnappDesignTokens",
+          "name" : "SnappDesignTokens"
+        }
+      ]
+    },
+    "performanceAntipatternCheckerEnabled" : true,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:",
+      "identifier" : "SnappDesignTokens",
+      "name" : "SnappDesignTokens"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "SnappDesignTokensTests",
+        "name" : "SnappDesignTokensTests"
+      }
+    }
+  ],
+  "version" : 1
+}
