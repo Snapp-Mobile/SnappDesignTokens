@@ -7,17 +7,55 @@
 import Foundation
 import OSLog
 
+/// Actor for downloading and caching file token assets.
+///
+/// Manages local file cache for remote assets referenced in design tokens.
+/// Handles concurrent downloads with deduplication, organizes files by type
+/// (images, fonts), and provides cleanup functionality.
+///
+/// Thread-safe actor ensuring single download per URL even with concurrent
+/// requests.
+///
+/// Example:
+/// ```swift
+/// let manager = AssetsManager(themeName: "light")
+/// let localURL = try await manager.download(
+///     url: URL(string: "https://example.com/icon.png")!,
+///     mimeType: "image/png"
+/// )
+/// // File cached at: ~/Documents/light/images/icon.png
+/// ```
 public actor AssetsManager {
+    /// File manager for file system operations.
     let fileManager: FileManager
+
+    /// Images subdirectory name.
     private let imagesFolderName = "images"
+
+    /// Fonts subdirectory name.
     private let fontsFolderName = "fonts"
 
+    /// Active download tasks keyed by URL for deduplication.
     var queue: [URL: Task<URL, any Error>] = [:]
 
+    /// Root directory for all cached files.
     let cacheRootURL: URL
+
+    /// Directory for cached image files.
     let imageCacheRootURL: URL
+
+    /// Directory for cached font files.
     let fontCacheRootURL: URL
 
+    /// Creates an assets manager.
+    ///
+    /// Initializes cache directories for theme assets. Creates subdirectories
+    /// for images and fonts if they don't exist.
+    ///
+    /// - Parameters:
+    ///   - fileManager: File manager instance (default: `.default`)
+    ///   - themeCacheRootURL: Root cache directory (default: documents directory)
+    ///   - themeName: Theme identifier for cache organization (default: `"default"`)
     public init(
         _ fileManager: FileManager = .default,
          themeCacheRootURL: URL? = nil,
@@ -48,6 +86,17 @@ public actor AssetsManager {
 
     }
 
+    /// Downloads file to local cache if not already cached.
+    ///
+    /// Deduplicates concurrent requests for same URL. Organizes cached files by
+    /// MIME type (images/, font/) into subdirectories. Returns immediately if
+    /// file already exists in cache.
+    ///
+    /// - Parameters:
+    ///   - url: Remote file URL to download
+    ///   - mimeType: MIME type for cache directory selection
+    /// - Returns: Local file URL in cache
+    /// - Throws: Download or file system error
     @discardableResult
     public func download(url: URL, mimeType: String) async throws -> URL {
         let fileName = url.lastPathComponent
@@ -89,6 +138,13 @@ public actor AssetsManager {
         try data.write(to: destination)
     }
 
+    /// Cleans up cache and cancels active downloads.
+    ///
+    /// Cancels all pending download tasks and optionally removes cached files
+    /// from disk.
+    ///
+    /// - Parameter removeFiles: When `true`, deletes all cached files (default: `true`)
+    /// - Throws: File system error if file removal fails
     public func cleanup(removeFiles: Bool = true) throws {
         _ = queue.values.map { $0.cancel() }
         queue = [:]
