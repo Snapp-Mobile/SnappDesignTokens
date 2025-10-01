@@ -4,10 +4,32 @@
 //  Created by Volodymyr Voiko on 13.03.2025.
 //
 
+/// Processor that converts dimension values to a target unit.
+///
+/// Traverses token tree converting all dimension values (constants, expressions,
+/// typography dimensions) to specified target unit using ``DimensionValueConverter``.
+/// Handles dimension constants, expression elements, and typography font size/letter spacing.
+///
+/// Example:
+/// ```swift
+/// // Tokens with mixed units: { "spacing": "16px", "margin": "1rem" }
+///
+/// let processor: TokenProcessor = .dimensionValueConversion(targetUnit: .rem)
+/// let converted = try await processor.process(token)
+/// // Result: { "spacing": "1rem", "margin": "1rem" }
+/// ```
 public struct DimensionValueConversionProcessor: TokenProcessor {
+    /// Converter for unit conversion calculations as ``DimensionValueConverter``.
     public let converter: DimensionValueConverter
+
+    /// Target unit for all dimension values as ``DimensionUnit``.
     public let targetUnit: DimensionUnit
 
+    /// Creates a dimension value conversion processor.
+    ///
+    /// - Parameters:
+    ///   - converter: Converter implementation (default: `.default`)
+    ///   - targetUnit: Target dimension unit (default: `.default`)
     public init(
         converter: DimensionValueConverter = .default,
         targetUnit: DimensionUnit = .default
@@ -16,6 +38,14 @@ public struct DimensionValueConversionProcessor: TokenProcessor {
         self.targetUnit = targetUnit
     }
 
+    /// Converts all dimension values to target unit.
+    ///
+    /// Processes dimension constants, expression elements, and typography
+    /// dimensions (fontSize, letterSpacing). Non-dimension tokens pass through
+    /// unchanged.
+    ///
+    /// - Parameter token: Token tree to process
+    /// - Returns: Token tree with dimensions converted to target unit
     public func process(_ token: Token) async throws -> Token {
         token.map { element in
             switch element {
@@ -50,6 +80,12 @@ public struct DimensionValueConversionProcessor: TokenProcessor {
 
 extension TokenProcessor
 where Self == DimensionValueConversionProcessor {
+    /// Creates a dimension value conversion processor.
+    ///
+    /// - Parameters:
+    ///   - converter: Converter implementation (default: `.default`)
+    ///   - targetUnit: Target dimension unit
+    /// - Returns: Configured ``DimensionValueConversionProcessor``
     public static func dimensionValueConversion(
         using converter: DimensionValueConverter = .default,
         targetUnit: DimensionUnit
