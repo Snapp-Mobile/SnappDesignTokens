@@ -28,4 +28,6 @@ Thanks for your interest in contributing!
 
 Open an issue or start a discussion. We're happy to help!
 
-By contributing, you agree that your contributions will be licensed under the MIT License.
+---
+
+By contributing, you agree that your contributions will be licensed under the [MIT License](LICENSE).
