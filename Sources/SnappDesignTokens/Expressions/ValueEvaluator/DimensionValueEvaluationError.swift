@@ -6,35 +6,49 @@
 
 import Foundation
 
-/// Errors that can occur during mathematical expression processing
+/// Errors that can occur during dimension expression evaluation.
+///
+/// Thrown by ``DimensionValueEvaluator`` implementations when parsing or
+/// computing dimension expressions fails.
 public enum DimensionValueEvaluationError: Error, LocalizedError, Equatable {
-    /// The provided string is not a valid mathematical formula
+    /// Provided string is not a valid mathematical formula.
     case invalidFormula(String)
 
-    /// The regular expression for validation failed to compile
+    /// Regular expression for validation failed to compile.
     case regexCompilationFailure(Error)
 
-    /// The formula string is empty
+    /// Formula string is empty.
     case emptyFormula
 
-    /// An invalid character was encountered during parsing
+    /// Invalid character encountered during parsing.
+    ///
+    /// - Parameters:
+    ///   - character: Invalid character found
+    ///   - position: Character position in formula string
     case invalidCharacter(Character, position: Int)
 
-    /// The formula has incorrect syntax
+    /// Formula has incorrect syntax.
     case invalidSyntax(String)
 
-    /// Division by zero was attempted
+    /// Division by zero was attempted.
     case divisionByZero
 
-    /// The parser reached its maximum recursion depth
+    /// Parser reached its maximum recursion depth.
+    ///
+    /// Indicates excessively nested expressions that could cause stack overflow.
     case recursionLimitExceeded
 
-    /// A number in the formula is out of the representable range
+    /// Number in formula is out of representable range.
+    ///
+    /// Value is too large, too small, infinite, or NaN.
     case numberOutOfRange
 
+    /// Unresolved alias reference in expression.
+    ///
+    /// Alias could not be resolved to a concrete dimension value.
     case unresolvedAlias(path: TokenPath)
 
-    /// Human-readable description of the error
+    /// Human-readable error description.
     public var errorDescription: String? {
         switch self {
         case .invalidFormula(let input):
@@ -58,7 +72,12 @@ public enum DimensionValueEvaluationError: Error, LocalizedError, Equatable {
         }
     }
 
-    /// Equality comparison for error types
+    /// Compares errors for equality based on localized descriptions.
+    ///
+    /// - Parameters:
+    ///   - lhs: Left-hand side error
+    ///   - rhs: Right-hand side error
+    /// - Returns: `true` if errors have identical descriptions
     public static func == (
         lhs: DimensionValueEvaluationError,
         rhs: DimensionValueEvaluationError

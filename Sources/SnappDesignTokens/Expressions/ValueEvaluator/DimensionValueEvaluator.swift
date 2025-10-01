@@ -4,15 +4,30 @@
 //  Created by Volodymyr Voiko on 10.03.2025.
 //
 
-/// A protocol defining methods for evaluating dimensional formulas and expressions.
+/// Protocol for evaluating dimension expressions to constant values.
 ///
-/// This protocol is responsible for evaluating string formulas and dimension expressions,
-/// converting them into concrete dimension values with appropriate units.
+/// Defines strategy for parsing and computing mathematical expressions in design
+/// tokens. Implementations handle operator precedence, unit conversion, and
+/// error handling for invalid expressions.
+///
+/// Built-in implementations:
+/// - ``ArithmeticalExpressionEvaluator`` - Basic arithmetic (`+`, `-`, `*`, `/`)
+/// - ``NSExpressionDimensionEvaluator`` - Advanced math via `NSExpression`
+///
+/// Example:
+/// ```swift
+/// let evaluator = ArithmeticalExpressionEvaluator(baseUnit: .px, converter: .default)
+/// let expression = DimensionExpression(elements: [...])
+/// let result = try evaluator.evaluate(expression)  // DimensionConstant(value: 24, unit: .px)
+/// ```
 public protocol DimensionValueEvaluator: Sendable {
-    /// Evaluates a dimension expression and returns a value with its unit.
+    /// Evaluates dimension expression to constant value.
     ///
-    /// - Parameter expression: The dimension expression to evaluate
-    /// - Returns: A dimension value with its associated unit
-    /// - Throws: An error if the expression is invalid or cannot be evaluated
+    /// Parses expression elements (values, operators, parentheses) and computes
+    /// final result with appropriate unit.
+    ///
+    /// - Parameter expression: Dimension expression to evaluate
+    /// - Returns: Evaluated dimension constant with unit
+    /// - Throws: ``DimensionValueEvaluationError`` if expression is invalid or evaluation fails
     func evaluate(_ expression: DimensionExpression) throws -> DimensionConstant
 }
