@@ -6,19 +6,46 @@
 
 import Foundation
 
+/// Mathematical expression for dimension values.
+///
+/// DTCG dimension token value representing mathematical formula as sequence
+/// of elements (values, operators, parentheses, aliases). Encoded as string,
+/// decoded into structured element array for evaluation.
+///
+/// Example:
+/// ```swift
+/// // JSON: "16px * 1.5"
+/// // Decoded to:
+/// let expr = DimensionExpression(elements: [
+///     .value(.init(value: 16, unit: .px)),
+///     .operation(.multiply),
+///     .value(.init(value: 1.5, unit: .px))
+/// ])
+/// ```
 public struct DimensionExpression: Equatable, Sendable {
     private enum Constant {
         static let defaultRemBaseValue: CGFloat = 16
     }
 
+    /// Array of expression elements (values, operations, aliases).
     public var elements: [DimensionExpressionElement]
 
+    /// Creates a dimension expression.
+    ///
+    /// - Parameter elements: Expression elements in evaluation order
     public init(elements: [DimensionExpressionElement]) {
         self.elements = elements
-    }    
+    }
 }
 
 extension DimensionExpression: Codable {
+    /// Decodes dimension expression from string.
+    ///
+    /// Parses mathematical formula string splitting into elements by operators
+    /// and parentheses. Recognizes dimension values, aliases, and operations.
+    ///
+    /// - Parameter decoder: Decoder to read from
+    /// - Throws: ``DimensionExpressionParsingError`` or ``DecodingError`` if parsing fails
     public init(from decoder: any Decoder) throws {
         let container = try decoder.singleValueContainer()
         let rawString = try container.decode(String.self)
@@ -40,6 +67,13 @@ extension DimensionExpression: Codable {
         }
     }
 
+    /// Encodes dimension expression to string.
+    ///
+    /// Converts element array back to mathematical formula string by joining
+    /// raw values.
+    ///
+    /// - Parameter encoder: Encoder to write to
+    /// - Throws: Encoding error if serialization fails
     public func encode(to encoder: any Encoder) throws {
         var container = encoder.singleValueContainer()
         let stringValue = elements.map(\.rawValue).joined()
