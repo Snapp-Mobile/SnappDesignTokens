@@ -8,12 +8,12 @@ import SnappDesignTokens
 import Foundation
 import Testing
 
-@TaskLocal public var dtcgJSONDecoder = JSONDecoder()
+@TaskLocal var dtcgJSONDecoder = JSONDecoder()
 
-public struct TokenDecodingConfigurationTrait: TestTrait, TestScoping {
+struct TokenDecodingConfigurationTrait: TestTrait, TestScoping {
     let configuration: TokenDecodingConfiguration
 
-    public func provideScope(
+    func provideScope(
         for test: Test,
         testCase: Test.Case?,
         performing function: @Sendable () async throws -> Void
@@ -27,7 +27,7 @@ public struct TokenDecodingConfigurationTrait: TestTrait, TestScoping {
 }
 
 extension Trait where Self == TokenDecodingConfigurationTrait {
-    public static func dtcgDecoder(
+    static func dtcgDecoder(
         with configuration: TokenDecodingConfiguration
     ) -> Self {
         Self(configuration: configuration)

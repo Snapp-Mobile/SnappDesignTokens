@@ -7,7 +7,7 @@
 import Foundation
 
 extension Data {
-    public func prettyPrintJSON() -> String {
+    func prettyPrintJSON() -> String {
         guard let jsonObject = try? JSONSerialization.jsonObject(with: self, options: []),
               let jsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: [.prettyPrinted, .sortedKeys]),
               let jsonString = String(data: jsonData, encoding: .utf8) else {

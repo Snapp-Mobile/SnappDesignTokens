@@ -8,7 +8,7 @@ import Foundation
 import os.log
 
 /// A class for securely reading and extracting data from JSON files
-public final class JSONExtract {
+final class JSONExtract {
     // Create a dedicated logger for this class
     private let logger = Logger(subsystem: "com.SnappDesignTokens.\(#file)", category: "JSONExtract")
 
@@ -16,14 +16,14 @@ public final class JSONExtract {
     private let fileManager = FileManager.default
 
     // Initialize with default settings
-    public init() {
+    init() {
         logger.debug("JSONExtract initialized")
     }
 
     /// Reads a JSON file and returns its contents as a string
     /// - Parameter filePath: Path to the JSON file
     /// - Returns: JSON content as a string or nil if reading failed
-    public func readJSONFile(at filePath: String) -> String? {
+    func readJSONFile(at filePath: String) -> String? {
         logger.info("Reading JSON file at: \(filePath)")
 
         do {
@@ -57,7 +57,7 @@ public final class JSONExtract {
     ///   - jsonString: The JSON content to write
     ///   - filePath: The path where the JSON file should be saved
     /// - Returns: Boolean indicating success or failure
-    public func writeJSONFile(jsonData: Data, to fileURL: URL) -> Bool {
+    func writeJSONFile(jsonData: Data, to fileURL: URL) -> Bool {
         logger.info("Writing JSON to file at: \(fileURL.absoluteString)")
 
         do {
@@ -77,7 +77,7 @@ public final class JSONExtract {
     ///   - filePath: Path to the JSON file
     ///   - keyPath: Array of keys to navigate the JSON structure
     /// - Returns: Extracted value as Any? or nil if extraction failed
-    public func extractValue(from filePath: String, at keyPath: [String]) -> Any? {
+    func extractValue(from filePath: String, at keyPath: [String]) -> Any? {
         logger.info("Extracting value at keyPath: \(keyPath.joined(separator: "."))")
         
         // Read the JSON file
@@ -118,7 +118,7 @@ public final class JSONExtract {
         }
     }
 
-    public func resourcesFileURL(fileName: String, filePath: String) -> URL {
+    func resourcesFileURL(fileName: String, filePath: String) -> URL {
         URL(fileURLWithPath: filePath)
             .deletingLastPathComponent() // Remove file name
             .appending(path: "Resources/\(fileName).json")

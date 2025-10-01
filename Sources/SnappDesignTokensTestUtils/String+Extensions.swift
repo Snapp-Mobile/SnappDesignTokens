@@ -12,7 +12,7 @@ extension String {
         let wrapped: T
     }
 
-    public func decodeTokenOfType(
+    func decodeTokenOfType(
         _ type: TokenType,
         wrapInParenthesis: Bool = false
     )
@@ -25,7 +25,7 @@ extension String {
         return try json.decode()
     }
 
-    public func decode<T: Decodable>(tryBoxed: Bool = true) throws -> T {
+    func decode<T: Decodable>(tryBoxed: Bool = true) throws -> T {
         guard let data = data(using: .utf8) else {
             throw DecodingError.dataCorrupted(
                 DecodingError.Context(
@@ -45,7 +45,7 @@ extension String {
         }
     }
 
-    public static func encode<T: Encodable>(_ object: T) throws -> String {
+    static func encode<T: Encodable>(_ object: T) throws -> String {
         let data = try dtcgJSONEncoder.encode(object)
         guard let string = String(data: data, encoding: .utf8) else {
             throw EncodingError.invalidValue(
@@ -59,7 +59,7 @@ extension String {
         return string
     }
 
-    public static func jsonString(from object: [String: [String: String]])
+    static func jsonString(from object: [String: [String: String]])
         -> String?
     {
         guard
@@ -74,7 +74,7 @@ extension String {
         return string
     }
 
-    public func prettyPrintJSON() -> String {
+    func prettyPrintJSON() -> String {
         guard let jsonData = data(using: .utf8) else {
             return "Invalid JSON"
         }

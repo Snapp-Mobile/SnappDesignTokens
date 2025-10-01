@@ -4,10 +4,10 @@
 //  Created by Oleksii Kolomiiets on 9/1/25.
 //
 
-import SnappDesignTokensTestUtils
 import Testing
 
 @testable import SnappDesignTokens
+@testable import SnappDesignTokensTestUtils
 
 @Suite
 struct TokenCollectionCodableTests {

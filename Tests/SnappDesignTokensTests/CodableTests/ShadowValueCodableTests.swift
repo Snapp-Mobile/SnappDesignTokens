@@ -4,10 +4,10 @@
 //  Created by Volodymyr Voiko on 01.04.2025.
 //
 
-import SnappDesignTokensTestUtils
 import Testing
 
 @testable import SnappDesignTokens
+@testable import SnappDesignTokensTestUtils
 
 @Suite
 struct ShadowValueCodableTests {

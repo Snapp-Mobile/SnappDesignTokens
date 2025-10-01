@@ -7,6 +7,7 @@
 import Testing
 
 @testable import SnappDesignTokens
+@testable import SnappDesignTokensTestUtils
 
 @Suite
 struct DimensionValueConversionProcessorTests {

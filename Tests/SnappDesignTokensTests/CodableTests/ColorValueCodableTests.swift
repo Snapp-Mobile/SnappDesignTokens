@@ -4,10 +4,10 @@
 //  Created by Volodymyr Voiko on 16.05.2025.
 //
 
-import SnappDesignTokensTestUtils
 import Testing
 
 @testable import SnappDesignTokens
+@testable import SnappDesignTokensTestUtils
 
 struct ColorValueCodableTests {
     @Test(
