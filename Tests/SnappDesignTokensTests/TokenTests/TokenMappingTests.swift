@@ -4,10 +4,10 @@
 //  Created by Volodymyr Voiko on 07.03.2025.
 //
 
-import SnappDesignTokensTestUtils
 import Testing
 
 @testable import SnappDesignTokens
+@testable import SnappDesignTokensTestUtils
 
 struct TokenMappingTests {
     @Test(arguments: [

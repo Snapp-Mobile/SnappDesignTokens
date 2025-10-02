@@ -4,11 +4,11 @@
 //  Created by Ilian Konchev on 17.03.25.
 //
 
-import SnappDesignTokensTestUtils
 import Foundation
 import Testing
 
 @testable import SnappDesignTokens
+@testable import SnappDesignTokensTestUtils
 
 @Suite
 struct UnknownTokenCodableTests {

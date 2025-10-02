@@ -7,7 +7,7 @@
 import SnappDesignTokens
 
 extension GradientColor {
-    public static func stop(
+    static func stop(
         _ color: CompositeTokenValue<ColorValue>,
         at position: CompositeTokenValue<NumberValue>
     ) -> GradientColor {

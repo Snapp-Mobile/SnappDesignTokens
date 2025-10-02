@@ -4,10 +4,10 @@
 //  Created by Volodymyr Voiko on 06.03.2025.
 //
 
-import SnappDesignTokensTestUtils
 import Testing
 
 @testable import SnappDesignTokens
+@testable import SnappDesignTokensTestUtils
 
 struct TokenAliasResolutionTests {
     let root: Token = .group(

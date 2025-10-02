@@ -4,12 +4,12 @@
 //  Created by Ilian Konchev on 5.03.25.
 //
 
-import SnappDesignTokensTestUtils
 import Foundation
 import Testing
 import UniformTypeIdentifiers
 
 @testable import SnappDesignTokens
+@testable import SnappDesignTokensTestUtils
 
 @Suite
 struct FileValueCodableTests {

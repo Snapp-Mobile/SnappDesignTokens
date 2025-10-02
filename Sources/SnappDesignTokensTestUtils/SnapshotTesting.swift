@@ -10,7 +10,7 @@ import Foundation
 private let snapshotsDirectoryPath = ".Snapshots"
 private let jsonExtension = "json"
 
-public func matchSnapshot(
+func matchSnapshot(
     _ data: Data,
     filePath: StaticString = #filePath,
     function: StaticString = #function,

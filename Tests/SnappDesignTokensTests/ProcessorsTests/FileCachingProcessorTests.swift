@@ -5,10 +5,10 @@
 //
 
 import Foundation
-import SnappDesignTokensTestUtils
 import Testing
 
 @testable import SnappDesignTokens
+@testable import SnappDesignTokensTestUtils
 
 struct FileCachingProcessorTests {
     let processor = FileCachingProcessor(
