@@ -8,7 +8,7 @@ Framework for parsing and processing `DTCG` tokens.
 
 A Swift library for parsing and processing [DTCG-compliant](https://www.designtokens.org/tr/third-editors-draft/format/) design tokens into type-safe Swift structures.
 
-[Clone on GitHub](https://github.com/Snapp-Mobile/SnappTheming)
+[Clone on GitHub](https://github.com/Snapp-Mobile/SnappDesignTokens)
 
 ### Features
 
