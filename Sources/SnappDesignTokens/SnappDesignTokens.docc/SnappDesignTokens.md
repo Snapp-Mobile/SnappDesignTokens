@@ -4,7 +4,9 @@
 
 ## Overview
 
-<!--@START_MENU_TOKEN@-->Text<!--@END_MENU_TOKEN@-->
+<div style="text-align: center;">
+  <img src="Resources/logo.png" alt="SnappTheming logo" width="300"/>
+</div>
 
 ## Topics
 
