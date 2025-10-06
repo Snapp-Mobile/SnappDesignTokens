@@ -1,5 +1,5 @@
 <div style="text-align: center;">
-  <img src="Sources/SnappDesignTokens/SnappDesignTokens.docc/Resources/logo.png" alt="SnappTheming logo" width="300"/>
+  <img src="Sources/SnappDesignTokens/SnappDesignTokens.docc/Resources/logo.png" alt="SnappTheming logo" width="128"/>
 </div>
 <p align="center">
   <img src="https://img.shields.io/badge/Platform-iOS%2016%2B%20%7C%20macOS%2013%2B-blue.svg" alt="Platform">
