@@ -4,9 +4,7 @@
 
 ## Overview
 
-<div style="text-align: center;">
-  <img src="Resources/logo.png" alt="SnappTheming logo" width="300"/>
-</div>
+![SnappDesignTokens logo](logo.png)
 
 ## Topics
 
