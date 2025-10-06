@@ -11,22 +11,6 @@
 
 A Swift library for parsing and processing [DTCG-compliant](https://www.designtokens.org/tr/third-editors-draft/format/) design tokens into type-safe Swift structures.
 
-## Contents
-- [Features](#features)
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Quick Start](#quick-start)
-- [Usage](#usage)
-  - [Loading Design Tokens](#loading-design-tokens)
-  - [Processing Pipelines](#processing-pipelines)
-  - [Working with Token Values](#working-with-token-values)
-  - [Alias Resolution](#alias-resolution)
-  - [Expression Evaluation](#expression-evaluation)
-  - [Unit Conversion](#unit-conversion)
-- [Documentation](#documentation)
-- [Contributing](#contributing)
-- [License](#license)
-
 ## Features
 
 - ✅ Full DTCG format specification compliance
