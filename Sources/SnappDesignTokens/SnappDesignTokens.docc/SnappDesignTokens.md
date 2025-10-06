@@ -1,13 +1,23 @@
 # ``SnappDesignTokens``
 
-<!--@START_MENU_TOKEN@-->Summary<!--@END_MENU_TOKEN@-->
+Framework for parsing and processing `DTCG` tokens.
 
 ## Overview
 
 ![SnappDesignTokens logo](logo.png)
 
-## Topics
+A Swift library for parsing and processing [DTCG-compliant](https://www.designtokens.org/tr/third-editors-draft/format/) design tokens into type-safe Swift structures.
 
-### <!--@START_MENU_TOKEN@-->Group<!--@END_MENU_TOKEN@-->
+[Clone on GitHub](https://github.com/Snapp-Mobile/SnappTheming)
 
-- <!--@START_MENU_TOKEN@-->``Symbol``<!--@END_MENU_TOKEN@-->
+### Features
+
+- **DTCG Compliance:** Full specification support
+- **Token Types:** Color, Dimension, FontFamily, FontWeight, Duration, CubicBezier, Number, StrokeStyle, Border, Transition, Shadow, Gradient, Typography
+- **Alias Resolution:** `{group.token}` references
+- **Expression Evaluation:** Arithmetic operations in dimension values
+- **Unit Conversion:** px ↔ rem
+- **Processing Pipeline:** Composable token processors
+- **Asset Caching:** Built-in file caching
+- **Zero Dependencies:** Pure Swift implementation
+- **Cross-Platform:** iOS, macOS, tvOS, watchOS, visionOS
