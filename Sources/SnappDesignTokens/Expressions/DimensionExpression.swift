@@ -45,7 +45,7 @@ extension DimensionExpression: Codable {
     /// and parentheses. Recognizes dimension values, aliases, and operations.
     ///
     /// - Parameter decoder: Decoder to read from
-    /// - Throws: ``DimensionExpressionParsingError`` or ``DecodingError`` if parsing fails
+    /// - Throws: ``DimensionExpressionParsingError`` or `DecodingError` if parsing fails
     public init(from decoder: any Decoder) throws {
         let container = try decoder.singleValueContainer()
         let rawString = try container.decode(String.self)

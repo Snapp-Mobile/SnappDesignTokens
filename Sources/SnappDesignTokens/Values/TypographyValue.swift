@@ -8,19 +8,8 @@ import Foundation
 
 /// Represents a complete typographic style.
 ///
-/// DTCG composite token combining five required text-related properties. Each property
-/// supports both direct values and token aliases for flexible design system composition.
-///
-/// Example:
-/// ```swift
-/// let heading = TypographyValue(
-///     fontFamily: .value(.init("Helvetica")),
-///     fontSize: .value(.constant(.init(value: 16, unit: .px))),
-///     fontWeight: .value(.bold),
-///     letterSpacing: .value(.constant(.init(value: 0.1, unit: .px))),
-///     lineHeight: .value(1.2)
-/// )
-/// ```
+/// Combines five text-related properties: font family, size, weight, letter spacing,
+/// and line height. All properties support direct values and token aliases.
 public struct TypographyValue: Codable, Equatable, Sendable, CompositeToken {
     /// Font family as ``CompositeTokenValue`` of ``FontFamilyValue``.
     public let fontFamily: CompositeTokenValue<FontFamilyValue>
@@ -39,10 +28,10 @@ public struct TypographyValue: Codable, Equatable, Sendable, CompositeToken {
     /// Interpreted as a multiplier of the font size.
     public let lineHeight: CompositeTokenValue<NumberValue>
 
-    /// Decodes all five typography properties.
+    /// Decodes all typography properties.
     ///
     /// - Parameter decoder: Decoder to read data from
-    /// - Throws: ``DecodingError`` if any required property is missing or invalid
+    /// - Throws: `DecodingError` if any required property is missing or invalid
     public init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.fontFamily = try container.decode(

@@ -30,7 +30,7 @@ extension TokenArray {
     /// - Parameters:
     ///   - decoder: Decoder to read data from
     ///   - configuration: Parent configuration including inherited type and custom mappings
-    /// - Throws: ``DecodingError`` if array structure is invalid
+    /// - Throws: `DecodingError` if array structure is invalid
     init(
         from decoder: any Decoder,
         parentConfiguration configuration: TokenDecodingConfiguration

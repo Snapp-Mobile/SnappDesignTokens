@@ -40,7 +40,7 @@ where RawValue == String {
     ///
     /// - Parameter decoder: Decoder to read data from
     /// - Returns: Decoded ``TokenMeasurement``, or `nil` to fall back to standard decoding
-    /// - Throws: ``DecodingError`` if custom decoding fails
+    /// - Throws: `DecodingError` if custom decoding fails
     static func decode(_ decoder: any Decoder) throws -> TokenMeasurement<Self>?
 }
 

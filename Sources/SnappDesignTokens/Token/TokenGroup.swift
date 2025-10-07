@@ -31,7 +31,7 @@ extension TokenGroup {
     /// - Parameters:
     ///   - decoder: Decoder to read data from
     ///   - configuration: Parent configuration including inherited type and custom mappings
-    /// - Throws: ``DecodingError`` if group structure is invalid
+    /// - Throws: `DecodingError` if group structure is invalid
     init(
         from decoder: any Decoder,
         parentConfiguration configuration: TokenDecodingConfiguration

@@ -69,7 +69,7 @@ public struct FileValue: DecodableWithConfiguration, Decodable,
     /// - Parameters:
     ///   - decoder: Decoder to read data from
     ///   - configuration: Optional configuration with source location for resolving relative paths
-    /// - Throws: ``DecodingError`` if value is not a string or ``FileValueDecodingError/invalidURL(_:)`` if string is not a valid URL
+    /// - Throws: `DecodingError.typeMismatch` if the encountered stored value is  not a single value container, `DecodingError.valueNotFound` if value is not a string or ``FileValueDecodingError/invalidURL(_:)`` if string is not a valid URL
     public init(
         from decoder: any Decoder,
         configuration: FileValueDecodingConfiguration?
@@ -108,7 +108,7 @@ public struct FileValue: DecodableWithConfiguration, Decodable,
     /// - Parameters:
     ///   - encoder: Encoder to write data to
     ///   - configuration: URL encoding format (absolute or relative)
-    /// - Throws: ``EncodingError`` if URL cannot be encoded in the specified format
+    /// - Throws: `EncodingError.invalidValue` if URL cannot be encoded in the specified format
     public func encode(
         to encoder: any Encoder,
         configuration: FileValueEncodingConfiguration

@@ -65,7 +65,7 @@ public enum Token: DecodableWithConfiguration, Decodable,
     /// - Parameters:
     ///   - decoder: Decoder to read data from
     ///   - configuration: Configuration including parent type and custom mappings
-    /// - Throws: ``DecodingError`` if decoding fails
+    /// - Throws: `DecodingError` if decoding fails
     public init(
         from decoder: any Decoder,
         configuration: TokenDecodingConfiguration

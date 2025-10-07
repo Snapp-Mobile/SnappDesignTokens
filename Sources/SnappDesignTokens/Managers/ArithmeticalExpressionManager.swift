@@ -6,21 +6,37 @@
 
 import Foundation
 
-protocol Numeric {
+/// Protocol for numeric types supporting arithmetic operations.
+///
+/// Enables generic mathematical expression evaluation across different numeric types.
+public protocol Numeric {
+    /// Adds two values.
     static func + (lhs: Self, rhs: Self) -> Self
+
+    /// Subtracts right value from left value.
     static func - (lhs: Self, rhs: Self) -> Self
+
+    /// Multiplies two values.
     static func * (lhs: Self, rhs: Self) -> Self
+
+    /// Divides left value by right value.
     static func / (lhs: Self, rhs: Self) -> Self
+
+    /// Checks equality of two values.
     static func == (lhs: Self, rhs: Self) -> Bool
+
+    /// Creates a value from a Double.
     init(_ value: Double)
 }
 
-// Extend Double to conform to our Numeric protocol
 extension Double: Numeric {}
 
-// Generic math expression manager that can work with Double by default
-// and can be extended to support other numeric types
-final class ArithmeticalExpressionManager<T: Numeric> {
+/// Evaluates mathematical expressions using recursive descent parsing.
+///
+/// Parses and evaluates arithmetic formulas with support for addition, subtraction,
+/// multiplication, division, parentheses, and unary operators. Includes protections
+/// against stack overflow and division by zero.
+final public class ArithmeticalExpressionManager<T: Numeric> {
     private var formula: String
     private var position: Int = 0
     private var currentChar: Character?
@@ -66,8 +82,14 @@ final class ArithmeticalExpressionManager<T: Numeric> {
         recursionDepth -= 1
     }
 
-    // Parses the formula and returns the result
-    func evaluate() throws(DimensionValueEvaluationError) -> T {
+    /// Evaluates the formula and returns the result.
+    ///
+    /// Validates syntax using ``DefaultDimensionFormulaSyntax``, then parses and evaluates
+    /// the expression using recursive descent parsing.
+    ///
+    /// - Returns: Evaluated numeric result
+    /// - Throws: ``DimensionValueEvaluationError`` if syntax is invalid, recursion limit exceeded, or division by zero occurs
+    public func evaluate() throws(DimensionValueEvaluationError) -> T {
         let syntaxChecker = DefaultDimensionFormulaSyntax(formula: formula)
         try syntaxChecker.isValidFormat()
 

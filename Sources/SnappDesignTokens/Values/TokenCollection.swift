@@ -41,7 +41,7 @@ extension TokenCollection: Decodable where Value: Decodable {
     /// Attempts array decoding first, falling back to single value if array decoding fails.
     ///
     /// - Parameter decoder: Decoder to read data from
-    /// - Throws: ``DecodingError`` if value cannot be decoded as either array or single value
+    /// - Throws: `DecodingError` if value cannot be decoded as either array or single value
     public init(from decoder: any Decoder) throws {
         do {
             self.values = try [Value](from: decoder)
@@ -57,7 +57,7 @@ extension TokenCollection: Encodable where Value: Encodable {
     /// Encodes single-element collections as unwrapped value, multi-element as array.
     ///
     /// - Parameter encoder: Encoder to write data to
-    /// - Throws: ``EncodingError`` if encoding fails
+    /// - Throws: `EncodingError.invalidValue` if encoding fails
     public func encode(to encoder: any Encoder) throws {
         if values.count == 1 {
             try values[0].encode(to: encoder)

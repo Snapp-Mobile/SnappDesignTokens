@@ -50,7 +50,7 @@ public enum DimensionValue: Codable, Equatable, Sendable {
     /// Attempts to decode as ``DimensionConstant`` first, falling back to ``DimensionExpression``.
     ///
     /// - Parameter decoder: Decoder to read data from
-    /// - Throws: ``DecodingError`` if neither format succeeds
+    /// - Throws: `DecodingError` if neither format succeeds
     public init(from decoder: any Decoder) throws {
         let container = try decoder.singleValueContainer()
         let constantValue = try? container.decode(DimensionConstant.self)

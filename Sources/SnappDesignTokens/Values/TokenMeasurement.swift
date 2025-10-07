@@ -54,7 +54,7 @@ where T: UnitType {
     /// with separate `value` and `unit` properties.
     ///
     /// - Parameter decoder: Decoder to read data from
-    /// - Throws: ``DecodingError`` if decoding fails
+    /// - Throws: `DecodingError` if decoding fails
     public init(from decoder: any Decoder) throws {
         if let decoded = try T.decode(decoder) {
             self = decoded

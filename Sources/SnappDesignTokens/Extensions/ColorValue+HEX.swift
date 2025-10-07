@@ -97,7 +97,7 @@ extension ColorValue {
     /// ```
     ///
     /// - Parameters:
-    ///   - format: Alpha channel placement (default: ``.rgba``)
+    ///   - format: Alpha channel placement (default: ``ColorHexFormat/rgba``)
     ///   - skipFullOpacityAlpha: Omit alpha when fully opaque (default: `false`)
     /// - Returns: Hex color string
     /// - Throws: ``ColorValueHexEncodingError`` if color space is not sRGB or components contain "none"
