@@ -8,27 +8,9 @@ import Foundation
 
 /// Represents a single color stop in a gradient.
 ///
-/// Used within ``GradientValue`` to define color transitions. Each stop specifies a color
-/// and its position along the gradient axis (0-1 range, where 0 is start and 1 is end).
-/// Both properties support direct values and token aliases.
-///
-/// Per DTCG specification, positions outside [0, 1] are clamped. If no stops exist at
-/// 0 or 1, the closest color extends to that end.
-///
-/// Example:
-/// ```swift
-/// // Stop at start
-/// let blueStart = GradientColor(
-///     color: .value(.blue),
-///     position: .value(0)
-/// )
-///
-/// // Stop at end using alias
-/// let redEnd = GradientColor(
-///     color: .alias(TokenPath("brand-primary")),
-///     position: .value(1)
-/// )
-/// ```
+/// Used within ``GradientValue`` to define color transitions. Each stop specifies
+/// a color and position (0-1, where 0 is start and 1 is end). Both properties
+/// support direct values and token aliases.
 public struct GradientColor: Equatable, Sendable, Codable {
     /// Color at this gradient stop as ``CompositeTokenValue`` of ``ColorValue``.
     public let color: CompositeTokenValue<ColorValue>
