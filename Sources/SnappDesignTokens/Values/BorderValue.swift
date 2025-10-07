@@ -6,19 +6,10 @@
 
 import Foundation
 
-/// Represents a border token value with color, width, and stroke style.
+/// Represents a border with color, width, and stroke style properties.
 ///
-/// DTCG composite token combining three required sub-values. Each property
-/// supports both direct values and token aliases.
-///
-/// Example:
-/// ```swift
-/// let border = BorderValue(
-///     color: .value(.red),
-///     width: .value(.constant(.init(value: 3, unit: .px))),
-///     style: .value(.line(.solid))
-/// )
-/// ```
+/// Composite token combining three required sub-values. Each property
+/// supports both direct values and token aliases that reference other tokens.
 public struct BorderValue: Equatable, Codable, Sendable, CompositeToken {
     /// Border color as ``CompositeTokenValue`` of ``ColorValue``.
     public let color: CompositeTokenValue<ColorValue>
