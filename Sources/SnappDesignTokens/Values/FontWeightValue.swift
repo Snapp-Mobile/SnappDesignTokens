@@ -15,20 +15,11 @@ public enum FontWeightValueDecodingError: Error, Equatable {
     case invalidAlias(String)
 }
 
-/// Represents a font weight token value.
+/// Represents a font weight using numeric values or named aliases.
 ///
-/// DTCG primitive token for font weight (thickness) using numeric values (1-1000) or
-/// named aliases. Per DTCG specification, values outside 1-1000 are invalid and must
-/// be rejected.
-///
-/// Example:
-/// ```swift
-/// // Numeric weight
-/// let custom = FontWeightValue(rawValue: 350)
-///
-/// // Named alias
-/// let bold = FontWeightValue(alias: .bold)
-/// ```
+/// Supports numeric values (1-1000) or named aliases like "bold" or "extra-light".
+/// Decodes from either number or string. Values outside 1-1000 are rejected per
+/// DTCG specification.
 public struct FontWeightValue: RawRepresentable, Codable, Equatable,
     Sendable
 {
@@ -36,8 +27,7 @@ public struct FontWeightValue: RawRepresentable, Codable, Equatable,
 
     /// Named aliases for common font weights.
     ///
-    /// DTCG-defined keywords mapping to specific numeric values. Aliases are case-sensitive
-    /// and must match exactly during decoding.
+    /// DTCG-defined keywords mapping to specific numeric values. Case-sensitive.
     public enum Alias: String, CaseIterable, Equatable, Sendable {
         /// Thin weight (100).
         case thin, hairline
