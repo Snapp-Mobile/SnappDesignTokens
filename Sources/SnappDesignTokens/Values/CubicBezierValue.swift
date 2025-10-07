@@ -36,21 +36,9 @@ public struct CubicBezierValueDecodingError: Error, Equatable {
 
 /// Represents a cubic Bézier animation timing curve.
 ///
-/// DTCG primitive token defining how an animated property progresses during animation.
-/// Controls acceleration, deceleration, and other timing effects using two control points.
-///
-/// Per DTCG specification, the curve is defined by four values `[x1, y1, x2, y2]` where:
-/// - X coordinates (x1, x2) must be in range [0, 1]
-/// - Y coordinates (y1, y2) can be any real number
-///
-/// Example:
-/// ```swift
-/// // Accelerate curve
-/// let accelerate = CubicBezierValue(x1: 0.5, y1: 0, x2: 1, y2: 1)
-///
-/// // Decelerate curve
-/// let decelerate = CubicBezierValue(x1: 0, y1: 0, x2: 0.5, y2: 1)
-/// ```
+/// Defines how an animated property progresses using two control points.
+/// Decodes from 4-element array `[x1, y1, x2, y2]` where X coordinates must be
+/// in range [0, 1] and Y coordinates can be any real number.
 public struct CubicBezierValue: Equatable, Codable, Sendable {
     private static let xRange: ClosedRange<Double> = 0...1
 
