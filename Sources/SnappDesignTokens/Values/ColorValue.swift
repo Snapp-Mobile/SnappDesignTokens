@@ -6,33 +6,12 @@
 
 import Foundation
 
-/// Represents a color token value across different color spaces.
+/// Represents a color across different color spaces.
 ///
-/// DTCG primitive token enabling standardized color representation and translation
-/// between design and development tools. Supports 13+ color spaces including sRGB,
-/// Display P3, HSL, Lab, and more. Components can use numeric values or the "none"
-/// keyword for missing channels.
-///
-/// Example:
-/// ```swift
-/// // Hex string format (sRGB)
-/// let red = try ColorValue(hex: "#FF0000")
-///
-/// // Structured format with color space
-/// let hslWhite = ColorValue(
-///     colorSpace: .hsl,
-///     components: [.none, 0, 100],
-///     alpha: 1,
-///     hex: "#ffffff"
-/// )
-///
-/// // Lab color space
-/// let labMagenta = ColorValue(
-///     colorSpace: .lab,
-///     components: [60.17, 93.54, -60.5],
-///     hex: "#ff00ff"
-/// )
-/// ```
+/// Supports 13+ color spaces including sRGB, Display P3, HSL, Lab, and more.
+/// Can decode from hex strings (e.g., `"#FF0000"`) or structured format with
+/// explicit color space and components. Components support numeric values or
+/// ``ColorComponent/none`` for missing channels.
 public struct ColorValue: Codable, EncodableWithConfiguration, Equatable,
     Sendable
 {
@@ -66,10 +45,10 @@ public struct ColorValue: Codable, EncodableWithConfiguration, Equatable,
     /// Per DTCG specification, defaults to 1.0 (fully opaque) when not specified.
     public let alpha: Double
 
-    /// Optional hex string fallback using CSS 6-digit notation.
+    /// Optional hex string using CSS notation (e.g., `"#FF0000"`).
     ///
-    /// Used for sRGB colors (e.g., `"#FF0000"` for red) or as closest sRGB approximation
-    /// for other color spaces. Preserved during round-trip encoding/decoding.
+    /// For sRGB colors or closest sRGB approximation for other color spaces.
+    /// Preserved during round-trip encoding/decoding.
     public let hex: String?
 
     /// Creates a color value with the specified color space and components.
@@ -91,6 +70,13 @@ public struct ColorValue: Codable, EncodableWithConfiguration, Equatable,
         self.hex = hex
     }
 
+    /// Decodes a color from structured format or hex string.
+    ///
+    /// Attempts structured decoding first (color space + components), falling back
+    /// to hex string format.
+    ///
+    /// - Parameter decoder: Decoder to read data from
+    /// - Throws: `DecodingError` if format is invalid or hex string is malformed
     public init(from decoder: any Decoder) throws {
         do {
             let container = try decoder.container(keyedBy: CodingKeys.self)
