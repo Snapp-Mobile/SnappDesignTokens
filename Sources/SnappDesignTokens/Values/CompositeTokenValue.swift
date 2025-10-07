@@ -38,7 +38,7 @@ where Value: Codable, Value: Equatable, Value: Sendable {
     /// Attempts to decode as ``TokenPath`` first (alias), falling back to direct value.
     ///
     /// - Parameter decoder: Decoder to read data from
-    /// - Throws: ``DecodingError`` if neither alias nor value decoding succeeds
+    /// - Throws: `DecodingError` if neither alias nor value decoding succeeds
     public init(from decoder: any Decoder)
         throws
     {

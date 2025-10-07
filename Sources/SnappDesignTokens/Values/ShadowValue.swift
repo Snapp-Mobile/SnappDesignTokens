@@ -90,7 +90,7 @@ public struct ShadowValue: Codable, Equatable, Sendable, CompositeToken {
     /// Decodes all shadow properties.
     ///
     /// - Parameter decoder: Decoder to read data from
-    /// - Throws: ``DecodingError`` if any required property is missing or invalid
+    /// - Throws: `DecodingError` if any required property is missing or invalid
     public init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.color = try container.decode(CompositeTokenValue<ColorValue>.self, forKey: .color)
@@ -130,7 +130,7 @@ public struct ShadowValue: Codable, Equatable, Sendable, CompositeToken {
     /// Encodes all shadow properties.
     ///
     /// - Parameter encoder: Encoder to write data to
-    /// - Throws: ``EncodingError`` if any values are invalid for the given encoder's format
+    /// - Throws: `EncodingError.invalidValue` if any values are invalid for the given encoder's format
     public func encode(to encoder: any Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(self.color, forKey: .color)

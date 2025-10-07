@@ -134,7 +134,7 @@ public struct FontWeightValue: RawRepresentable, Codable, Equatable,
     /// Attempts numeric decoding first, falling back to alias lookup.
     ///
     /// - Parameter decoder: Decoder to read data from
-    /// - Throws: ``DecodingError`` if value is neither number nor string, ``FontWeightValueDecodingError`` if value/alias is invalid
+    /// - Throws: `DecodingError` if value is neither number nor string, ``FontWeightValueDecodingError`` if value/alias is invalid
     public init(from decoder: any Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let rawValue = try? container.decode(UInt.self) {

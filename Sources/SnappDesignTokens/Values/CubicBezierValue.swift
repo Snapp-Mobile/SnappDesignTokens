@@ -93,7 +93,7 @@ public struct CubicBezierValue: Equatable, Codable, Sendable {
     /// Expects format `[x1, y1, x2, y2]` and validates constraints per DTCG specification.
     ///
     /// - Parameter decoder: Decoder to read data from
-    /// - Throws: ``DecodingError`` if value is not an array or ``CubicBezierValueDecodingError`` if array length is invalid or X values out of range
+    /// - Throws: `DecodingError` if value is not an array or ``CubicBezierValueDecodingError`` if array length is invalid or X values out of range
     public init(from decoder: any Decoder) throws {
         let container = try decoder.singleValueContainer()
         let values = try container.decode([Double].self)

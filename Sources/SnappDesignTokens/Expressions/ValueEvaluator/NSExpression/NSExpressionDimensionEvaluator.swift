@@ -6,15 +6,31 @@
 
 import Foundation
 
-typealias NSExpressionDimensionEvaluator = DefaultNSExpressionDimensionEvaluator<RegularExpression>
+/// Type alias for the default NSExpression-based dimension evaluator.
+public typealias NSExpressionDimensionEvaluator = DefaultNSExpressionDimensionEvaluator<RegularExpression>
 
-/// A dimension value evaluator that uses NSExpression to calculate numeric values from dimension formulas
-struct DefaultNSExpressionDimensionEvaluator<T: RegularExpressionProtocol>: DimensionValueEvaluator {
+/// Evaluates dimension formulas using Foundation's NSExpression.
+///
+/// Calculates numeric values from mathematical expressions in dimension tokens.
+/// Converts all dimension values to a base unit before evaluation, then evaluates
+/// the formula using NSExpression.
+public struct DefaultNSExpressionDimensionEvaluator<T: RegularExpressionProtocol>: DimensionValueEvaluator {
+    /// Base unit for formula evaluation.
     let baseUnit: DimensionUnit
+
+    /// Converter for dimension unit transformations.
     let converter: DimensionValueConverter
+
+    /// Regular expression validator for formula syntax.
     var regularExpression: T
 
-    init(
+    /// Creates a dimension evaluator with the specified configuration.
+    ///
+    /// - Parameters:
+    ///   - baseUnit: Base unit for evaluation, defaults to `.px`
+    ///   - converter: Unit converter, defaults to `.default`
+    ///   - regularExpression: Formula validator, defaults to `RegularExpression()`
+    public init(
         baseUnit: DimensionUnit = .px,
         converter: DimensionValueConverter = .default,
         regularExpression: T = RegularExpression()
@@ -24,7 +40,15 @@ struct DefaultNSExpressionDimensionEvaluator<T: RegularExpressionProtocol>: Dime
         self.regularExpression = regularExpression
     }
 
-    func evaluate(
+    /// Evaluates a dimension expression to a constant value.
+    ///
+    /// Converts expression to formula in base unit, validates syntax, and evaluates
+    /// using NSExpression. Result is always returned in pixels.
+    ///
+    /// - Parameter expression: Dimension expression to evaluate
+    /// - Returns: Evaluated dimension constant in pixels
+    /// - Throws: ``DimensionValueEvaluationError`` if formula is invalid or evaluation fails
+    public func evaluate(
         _ expression: DimensionExpression
     ) throws -> DimensionConstant {
         let formula = try expression.formula(

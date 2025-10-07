@@ -64,7 +64,7 @@ public enum TokenValue: Decodable, DecodableWithConfiguration, Encodable,
     /// - Parameters:
     ///   - decoder: Decoder to read data from
     ///   - configuration: Configuration specifying token type and decoding options
-    /// - Throws: ``DecodingError`` if type is not specified or value structure is invalid
+    /// - Throws: `DecodingError` if type is not specified or value structure is invalid
     public init(
         from decoder: any Decoder,
         configuration: TokenValueDecodingConfiguration

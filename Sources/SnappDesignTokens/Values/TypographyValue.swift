@@ -42,7 +42,7 @@ public struct TypographyValue: Codable, Equatable, Sendable, CompositeToken {
     /// Decodes all five typography properties.
     ///
     /// - Parameter decoder: Decoder to read data from
-    /// - Throws: ``DecodingError`` if any required property is missing or invalid
+    /// - Throws: `DecodingError` if any required property is missing or invalid
     public init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.fontFamily = try container.decode(

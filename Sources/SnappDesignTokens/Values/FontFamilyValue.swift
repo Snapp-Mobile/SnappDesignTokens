@@ -27,7 +27,7 @@ public struct FontFamilyValue: Codable, Equatable, Sendable, ExpressibleByString
     /// Attempts array decoding first, falling back to single string.
     ///
     /// - Parameter decoder: Decoder to read data from
-    /// - Throws: ``DecodingError`` if value is neither string nor string array
+    /// - Throws: `DecodingError` if value is neither string nor string array
     public init(from decoder: any Decoder) throws {
         do {
             let names = try [String](from: decoder)

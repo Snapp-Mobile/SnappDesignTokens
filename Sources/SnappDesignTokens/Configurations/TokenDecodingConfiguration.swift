@@ -11,7 +11,7 @@ import Foundation
 /// Controls token parsing behavior including file value decoding, type inheritance
 /// from parent groups, and custom type mappings for non-standard token types.
 ///
-/// Set on ``JSONDecoder`` via `tokenDecodingConfiguration` property:
+/// Set on `JSONDecoder` via `tokenDecodingConfiguration` property:
 /// ```swift
 /// let decoder = JSONDecoder()
 /// decoder.tokenDecodingConfiguration = TokenDecodingConfiguration(

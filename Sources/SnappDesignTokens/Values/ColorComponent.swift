@@ -38,7 +38,7 @@ public enum ColorComponent: Equatable, Sendable, Codable {
     /// Decodes a color component from numeric value or "none" string.
     ///
     /// - Parameter decoder: Decoder to read data from
-    /// - Throws: ``DecodingError`` if value is neither numeric nor "none"
+    /// - Throws: `DecodingError` if value is neither numeric nor "none"
     public init(from decoder: any Decoder) throws {
         let container = try decoder.singleValueContainer()
         do {

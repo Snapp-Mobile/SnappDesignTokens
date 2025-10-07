@@ -12,7 +12,7 @@ import Foundation
 /// files, and measurements. Enables customization of output format while
 /// maintaining DTCG compliance or generating compact representations.
 ///
-/// Set on ``JSONEncoder`` via `tokenEncodingConfiguration` property:
+/// Set on `JSONEncoder` via `tokenEncodingConfiguration` property:
 /// ```swift
 /// let encoder = JSONEncoder()
 /// encoder.tokenEncodingConfiguration = TokenEncodingConfiguration(
