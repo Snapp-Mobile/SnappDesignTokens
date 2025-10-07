@@ -1,4 +1,7 @@
 <p align="center">
+  <img src="Sources/SnappDesignTokens/SnappDesignTokens.docc/Resources/logo.png" alt="SnappDesignTokens logo" width="128"/>
+</p>
+<p align="center">
   <img src="https://img.shields.io/badge/Platform-iOS%2016%2B%20%7C%20macOS%2013%2B-blue.svg" alt="Platform">
   <img src="https://img.shields.io/badge/Swift-6.1-orange.svg" alt="Swift">
   <img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License">
@@ -7,22 +10,6 @@
 # SnappDesignTokens
 
 A Swift library for parsing and processing [DTCG-compliant](https://www.designtokens.org/tr/third-editors-draft/format/) design tokens into type-safe Swift structures.
-
-## Contents
-- [Features](#features)
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Quick Start](#quick-start)
-- [Usage](#usage)
-  - [Loading Design Tokens](#loading-design-tokens)
-  - [Processing Pipelines](#processing-pipelines)
-  - [Working with Token Values](#working-with-token-values)
-  - [Alias Resolution](#alias-resolution)
-  - [Expression Evaluation](#expression-evaluation)
-  - [Unit Conversion](#unit-conversion)
-- [Documentation](#documentation)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 
