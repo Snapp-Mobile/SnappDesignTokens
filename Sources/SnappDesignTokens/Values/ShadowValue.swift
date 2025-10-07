@@ -6,60 +6,37 @@
 
 import Foundation
 
-/// Represents a single shadow layer.
+/// Represents a single shadow layer for drop or inner shadows.
 ///
-/// DTCG composite token defining drop shadows and inner shadows. Multiple ``ShadowValue``
-/// instances can be layered to create complex shadow effects. Each property supports both
-/// direct values and token aliases.
-///
-/// Example:
-/// ```swift
-/// // Drop shadow
-/// let dropShadow = ShadowValue(
-///     color: .value(try ColorValue(hex: "#000000")),
-///     offsetX: .value(DimensionValue(value: 2, unit: .px)),
-///     offsetY: .value(DimensionValue(value: 4, unit: .px)),
-///     blur: .value(DimensionValue(value: 8, unit: .px)),
-///     spread: .value(DimensionValue(value: 0, unit: .px))
-/// )
-///
-/// // Inner shadow
-/// let innerShadow = ShadowValue(
-///     color: .alias(TokenPath("shadow.inner.color")),
-///     offsetX: .value(DimensionValue(value: 0, unit: .px)),
-///     offsetY: .value(DimensionValue(value: 2, unit: .px)),
-///     blur: .value(DimensionValue(value: 4, unit: .px)),
-///     spread: .value(DimensionValue(value: -1, unit: .px)),
-///     inset: true
-/// )
-/// ```
+/// Defines shadow appearance with color, offsets, blur, and spread. Multiple instances
+/// can be layered for complex effects. All properties support direct values and token aliases.
 public struct ShadowValue: Codable, Equatable, Sendable, CompositeToken {
     /// Shadow color as ``CompositeTokenValue`` of ``ColorValue``.
     public let color: CompositeTokenValue<ColorValue>
 
     /// Horizontal shadow offset as ``CompositeTokenValue`` of ``DimensionValue``.
     ///
-    /// Positive values move shadow right, negative values move left.
+    /// Positive moves right, negative moves left.
     public let offsetX: CompositeTokenValue<DimensionValue>
 
     /// Vertical shadow offset as ``CompositeTokenValue`` of ``DimensionValue``.
     ///
-    /// Positive values move shadow down, negative values move up.
+    /// Positive moves down, negative moves up.
     public let offsetY: CompositeTokenValue<DimensionValue>
 
     /// Blur radius as ``CompositeTokenValue`` of ``DimensionValue``.
     ///
-    /// Higher values create more blur, 0 creates sharp shadow.
+    /// Higher values create more blur. Zero creates sharp shadow.
     public let blur: CompositeTokenValue<DimensionValue>
 
     /// Shadow expansion/contraction as ``CompositeTokenValue`` of ``DimensionValue``.
     ///
-    /// Positive values expand shadow, negative values contract it.
+    /// Positive expands shadow, negative contracts it.
     public let spread: CompositeTokenValue<DimensionValue>
 
-    /// Whether shadow renders inside the container (inner shadow).
+    /// Whether shadow renders inside the container.
     ///
-    /// When `true`, creates inner shadow. When `false` or `nil` (default), creates drop shadow.
+    /// `true` for inner shadow, `false` or `nil` (default) for drop shadow.
     public let inset: Bool?
 
     /// Creates a shadow with the specified properties.
