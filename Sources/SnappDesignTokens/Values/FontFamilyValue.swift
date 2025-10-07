@@ -6,18 +6,8 @@
 
 /// Represents a font family token value with optional fallbacks.
 ///
-/// DTCG primitive token for specifying font names with prioritized fallback list.
-/// Supports single font name or array of names ordered from most to least preferred,
-/// ensuring typography consistency across platforms.
-///
-/// Example:
-/// ```swift
-/// // Single font
-/// let primary: FontFamilyValue = "Comic Sans MS"
-///
-/// // Font stack with fallbacks
-/// let body = FontFamilyValue("Helvetica", "Arial", "sans-serif")
-/// ```
+/// Supports single font name or array of names ordered from most to least preferred.
+/// Values decode from either string or string array as shown in DTCG specification.
 public struct FontFamilyValue: Codable, Equatable, Sendable, ExpressibleByStringLiteral {
     /// Font names ordered from most to least preferred.
     public let names: [String]
