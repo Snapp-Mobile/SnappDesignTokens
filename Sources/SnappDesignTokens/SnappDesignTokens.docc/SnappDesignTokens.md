@@ -2,9 +2,11 @@
 
 Framework for parsing and processing `DTCG` tokens.
 
-## Overview
+@Metadata {
+    @PageImage(purpose: icon, source:"logo")
+}
 
-![SnappDesignTokens logo](logo.png)
+## Overview
 
 A Swift library for parsing and processing [DTCG-compliant](https://www.designtokens.org/tr/third-editors-draft/format/) design tokens into type-safe Swift structures.
 
