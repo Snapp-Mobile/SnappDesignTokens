@@ -10,7 +10,7 @@
 /// channel using the "none" keyword. Supports initialization from integer and floating-point
 /// literals for convenience.
 ///
-/// Example:
+/// ### Example
 /// ```swift
 /// // Numeric value
 /// let red: ColorComponent = 1.0

@@ -14,7 +14,7 @@
 /// - ``ArithmeticalExpressionEvaluator`` - Basic arithmetic (`+`, `-`, `*`, `/`)
 /// - ``NSExpressionDimensionEvaluator`` - Advanced math via `NSExpression`
 ///
-/// Example:
+/// ### Example
 /// ```swift
 /// let evaluator = ArithmeticalExpressionEvaluator(baseUnit: .px, converter: .default)
 /// let expression = DimensionExpression(elements: [...])

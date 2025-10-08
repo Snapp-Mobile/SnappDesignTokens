@@ -10,7 +10,7 @@
 /// typography dimensions) to specified target unit using ``DimensionValueConverter``.
 /// Handles dimension constants, expression elements, and typography font size/letter spacing.
 ///
-/// Example:
+/// ### Example
 /// ```swift
 /// // Tokens with mixed units: { "spacing": "16px", "margin": "1rem" }
 ///

@@ -12,7 +12,7 @@ import OSLog
 /// A token is the core data structure for design system information. Tokens can represent
 /// concrete values, hierarchical groups, references to other tokens, arrays, or unknown data.
 ///
-/// Example:
+/// ### Example
 /// ```swift
 /// // Value token
 /// let token: Token = .value(.color(.red))

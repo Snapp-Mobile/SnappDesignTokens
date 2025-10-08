@@ -11,7 +11,7 @@ import Foundation
 /// Used as a fallback when parsing encounters data that doesn't match any known token
 /// structure. Preserves the raw value to maintain round-trip encoding fidelity.
 ///
-/// Example:
+/// ### Example
 /// ```swift
 /// // String values
 /// let token: Token = .unknown("metadata-value")

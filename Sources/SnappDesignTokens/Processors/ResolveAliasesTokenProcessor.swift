@@ -13,7 +13,7 @@ import OSLog
 /// syntax) with their resolved values. Handles nested aliases, composite token
 /// aliases, and dimension expression aliases. Detects circular references.
 ///
-/// Example:
+/// ### Example
 /// ```swift
 /// // Token tree with aliases:
 /// // { "base": { "color": "#ff0000" }, "primary": "{base.color}" }

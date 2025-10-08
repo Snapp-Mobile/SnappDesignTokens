@@ -6,10 +6,6 @@
 
 import Foundation
 
-/// Represents a complete typographic style.
-///
-/// Combines five text-related properties: font family, size, weight, letter spacing,
-/// and line height. All properties support direct values and token aliases.
 public struct TypographyValue: Codable, Equatable, Sendable, CompositeToken {
     /// Font family as ``CompositeTokenValue`` of ``FontFamilyValue``.
     public let fontFamily: CompositeTokenValue<FontFamilyValue>

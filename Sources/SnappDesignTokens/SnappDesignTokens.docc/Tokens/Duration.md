@@ -1,5 +1,12 @@
 # ``DurationValue``
 
+Represents a time duration for animations and transitions.
+
+## Overview
+
+Used for animation timing, transition delays, and other time-based values.
+Specialization of ``TokenMeasurement`` for ``DurationUnit`` (seconds, milliseconds).
+
 ## Examples
 
 ### Direct values

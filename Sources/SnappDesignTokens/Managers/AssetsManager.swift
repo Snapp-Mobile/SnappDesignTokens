@@ -16,7 +16,7 @@ import OSLog
 /// Thread-safe actor ensuring single download per URL even with concurrent
 /// requests.
 ///
-/// Example:
+/// ### Example
 /// ```swift
 /// let manager = AssetsManager(themeName: "light")
 /// let localURL = try await manager.download(

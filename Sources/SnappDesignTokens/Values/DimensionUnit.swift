@@ -19,7 +19,7 @@ public enum DimensionUnitValueParsingError: Error {
 /// Conforms to ``UnitType`` to enable specialized decoding of formats like `"16px"` or
 /// bare numbers (defaulting to `.px`).
 ///
-/// Example:
+/// ### Example
 /// ```swift
 /// let pixels = DimensionUnit.px
 /// let rems = DimensionUnit.rem

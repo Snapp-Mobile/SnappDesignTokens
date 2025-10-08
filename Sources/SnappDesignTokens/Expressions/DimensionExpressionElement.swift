@@ -11,7 +11,7 @@ import Foundation
 /// Represents individual components in mathematical dimension expressions:
 /// operations, dimension values, or token alias references.
 ///
-/// Example:
+/// ### Example
 /// ```swift
 /// let elements: [DimensionExpressionElement] = [
 ///     .value(16, .px),           // Dimension value

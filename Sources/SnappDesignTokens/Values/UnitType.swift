@@ -15,7 +15,7 @@ import Foundation
 /// Conforming types must be string-representable enums where `rawValue` is the unit
 /// identifier (e.g., `"px"`, `"rem"`, `"ms"`).
 ///
-/// Example:
+/// ### Example
 /// ```swift
 /// enum DimensionUnit: String, UnitType {
 ///     case px

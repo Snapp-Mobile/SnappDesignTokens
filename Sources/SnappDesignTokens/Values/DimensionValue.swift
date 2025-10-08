@@ -15,7 +15,7 @@ import OSLog
 ///
 /// Per DTCG specification, dimensions must have a numeric value and unit (px or rem).
 ///
-/// Example:
+/// ### Example
 /// ```swift
 /// // Constant dimension
 /// let spacing = DimensionValue(value: 16, unit: .px)

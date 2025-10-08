@@ -1,5 +1,15 @@
 <p align="center">
-  <img src="Sources/SnappDesignTokens/SnappDesignTokens.docc/Resources/logo.png" alt="SnappDesignTokens logo" width="128"/>
+    <picture>
+        <source
+            srcset="Sources/SnappDesignTokens/SnappDesignTokens.docc/Resources/logo~dark.png"
+            media="(prefers-color-scheme: dark)"
+        />
+        <source
+            srcset="Sources/SnappDesignTokens/SnappDesignTokens.docc/Resources/logo.png"
+            media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
+        />
+        <img src="Sources/SnappDesignTokens/SnappDesignTokens.docc/Resources/logo.png" alt="SnappDesignTokens logo" width="128"/>
+    </picture>
 </p>
 <p align="center">
   <img src="https://img.shields.io/badge/Platform-iOS%2016%2B%20%7C%20macOS%2013%2B-blue.svg" alt="Platform">

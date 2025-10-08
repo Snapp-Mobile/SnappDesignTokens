@@ -17,7 +17,7 @@
 /// - ``DimensionValueConversionProcessor`` - Converts dimension units
 /// - ``CombineProcessor`` - Chains multiple processors
 ///
-/// Example:
+/// ### Example
 /// ```swift
 /// let processor: TokenProcessor = .combine(
 ///     .resolveAliases,

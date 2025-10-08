@@ -33,20 +33,6 @@ public enum FileValueURLEncodingFormat: Equatable, Sendable {
     case relative(from: URL?)
 }
 
-/// Represents a file reference token value.
-///
-/// DTCG primitive token for referencing external assets like images, fonts, or other files.
-/// Supports both absolute URLs and relative paths. When decoding relative paths, they can
-/// be resolved against a source location URL.
-///
-/// Example:
-/// ```swift
-/// // Absolute URL
-/// let image = FileValue(url: URL(string: "https://example.com/image.png")!)
-///
-/// // Relative path
-/// let font = FileValue(url: URL(string: "/fonts/Helvetica.woff")!)
-/// ```
 public struct FileValue: DecodableWithConfiguration, Decodable,
     EncodableWithConfiguration, Encodable,
     Equatable, Sendable
@@ -69,7 +55,7 @@ public struct FileValue: DecodableWithConfiguration, Decodable,
     /// - Parameters:
     ///   - decoder: Decoder to read data from
     ///   - configuration: Optional configuration with source location for resolving relative paths
-    /// - Throws: `DecodingError.typeMismatch` if the encountered stored value is  not a single value container, `DecodingError.valueNotFound` if value is not a string or ``FileValueDecodingError/invalidURL(_:)`` if string is not a valid URL
+    /// - Throws: `DecodingError` if value is not a string or ``FileValueDecodingError/invalidURL(_:)`` if string is not a valid URL
     public init(
         from decoder: any Decoder,
         configuration: FileValueDecodingConfiguration?

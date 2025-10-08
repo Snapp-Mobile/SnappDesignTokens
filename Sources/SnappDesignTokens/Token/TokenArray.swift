@@ -12,7 +12,7 @@ import Foundation
 /// shadow layers, or font family fallbacks. Inherits parent configuration including
 /// type and custom mappings.
 ///
-/// Example:
+/// ### Example
 /// ```swift
 /// let fontStack: TokenArray = [
 ///     .value(.fontFamily("Helvetica")),
