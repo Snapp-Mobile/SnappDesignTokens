@@ -1,5 +1,12 @@
 # ``FontFamilyValue``
 
+Represents a font family token value with optional fallbacks.
+
+## Overview
+
+Supports single font name or array of names ordered from most to least preferred.
+Values decode from either string or string array as shown in DTCG specification.
+
 ## Examples
 
 ### Direct values

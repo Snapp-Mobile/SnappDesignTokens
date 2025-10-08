@@ -1,5 +1,12 @@
 # ``NumberValue``
 
+Represents a unitless numeric value.
+
+## Overview
+
+Used for line heights, gradient stop positions, opacity, and other unitless
+measurements. Distinct from ``DimensionValue`` which includes units like px or rem.
+
 ## Examples
 
 ### Direct values

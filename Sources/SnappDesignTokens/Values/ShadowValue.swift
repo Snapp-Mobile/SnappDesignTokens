@@ -6,10 +6,6 @@
 
 import Foundation
 
-/// Represents a single shadow layer for drop or inner shadows.
-///
-/// Defines shadow appearance with color, offsets, blur, and spread. Multiple instances
-/// can be layered for complex effects. All properties support direct values and token aliases.
 public struct ShadowValue: Codable, Equatable, Sendable, CompositeToken {
     /// Shadow color as ``CompositeTokenValue`` of ``ColorValue``.
     public let color: CompositeTokenValue<ColorValue>

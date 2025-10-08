@@ -6,12 +6,6 @@
 
 import Foundation
 
-/// Represents a color across different color spaces.
-///
-/// Supports 13+ color spaces including sRGB, Display P3, HSL, Lab, and more.
-/// Can decode from hex strings (e.g., `"#FF0000"`) or structured format with
-/// explicit color space and components. Components support numeric values or
-/// ``ColorComponent/none`` for missing channels.
 public struct ColorValue: Codable, EncodableWithConfiguration, Equatable,
     Sendable
 {

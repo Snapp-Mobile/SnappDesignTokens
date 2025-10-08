@@ -1,5 +1,13 @@
 # ``CubicBezierValue``
 
+Represents a cubic Bézier animation timing curve.
+
+## Overview
+
+Defines how an animated property progresses using two control points.
+Decodes from 4-element array `[x1, y1, x2, y2]` where X coordinates must be
+in range [0, 1] and Y coordinates can be any real number.
+
 ## Examples
 
 ### Direct values
