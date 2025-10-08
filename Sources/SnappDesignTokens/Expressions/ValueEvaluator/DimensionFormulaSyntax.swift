@@ -7,7 +7,7 @@
 import Foundation
 
 /// Protocol that defines requirements for formula syntax validation
-protocol DimensionFormulaSyntax {
+public protocol DimensionFormulaSyntax {
     /// Validates whether the formula conforms to expected format
     /// - Throws: DimensionValueEvaluationError if validation fails
     func isValidFormat() throws(DimensionValueEvaluationError)
