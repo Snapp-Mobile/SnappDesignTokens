@@ -1,5 +1,9 @@
 # DesignTokens
 
+@Metadata {
+    @PageImage(purpose: icon, source:"dtcg_logo")
+}
+
 Parse and work with Design Tokens Community Group (DTCG) format files in Swift.
 
 ## Overview
@@ -40,5 +44,11 @@ Composite tokens combine multiple sub-values in pre-defined structures:
 - **Type-safe parsing**: Converts JSON to strongly-typed Swift structures
 - **Token aliases**: Supports `{group.token}` reference syntax
 - **Alias resolution**: Resolves token references to actual values
+- **Expression evaluation**: Evaluates mathematical expressions in dimension values (e.g., `"16px * 1.5"`, `"{spacing.base} * 2"`)
 - **Comprehensive validation**: Type checking per DTCG specification
 - **Extensions support**: Handles `$extensions` for custom metadata
+
+## Topics
+
+### Guides
+- <doc:ExpressionEvaluation>
