@@ -8,7 +8,7 @@
 public enum CompositeTokenValueAliasResolutionError: Error, Equatable {
     /// Referenced token type does not match expected type.
     ///
-    /// Example:
+    /// ### Example
     /// ```swift
     /// // fontSize references a color instead of a dimension
     /// fontSize: .alias(TokenPath("dimension", "fontSize"))  // where dimension.fontSize is a color
@@ -22,7 +22,7 @@ extension CompositeTokenValue {
     /// Returns the value unchanged if it's already a direct value. For aliases, looks up
     /// the referenced token and extracts its value.
     ///
-    /// Example:
+    /// ### Example
     /// ```swift
     /// let fontSize: CompositeTokenValue<DimensionValue> = .alias(TokenPath("dimension", "fontSize"))
     /// let resolved = try fontSize.resolvingAliases(root: token)  // Returns .value(16px)

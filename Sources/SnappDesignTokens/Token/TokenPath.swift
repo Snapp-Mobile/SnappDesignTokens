@@ -29,7 +29,7 @@ public enum TokenPathParsingError: String, Error, LocalizedError, Equatable {
 /// Token references use the syntax `{group.token}` to reference other token values.
 /// The path is period-separated and represents the hierarchical location of the target token.
 ///
-/// Example:
+/// ### Example
 /// ```swift
 /// // From string literal
 /// let path = TokenPath(from: "{color.primary}")

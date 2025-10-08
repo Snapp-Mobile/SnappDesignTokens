@@ -10,7 +10,7 @@
 /// to the next. Enables building complex processing pipelines from simple
 /// reusable components.
 ///
-/// Example:
+/// ### Example
 /// ```swift
 /// let processor: TokenProcessor = .combine(
 ///     .resolveAliases,

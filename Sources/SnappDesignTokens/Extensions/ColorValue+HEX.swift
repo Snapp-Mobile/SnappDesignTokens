@@ -39,7 +39,7 @@ extension ColorValue {
     /// Parses hex color strings in #RRGGBB or #RRGGBBAA format (6 or 8 hex digits).
     /// Resulting color uses sRGB color space. Alpha defaults to 1.0 for 6-digit format.
     ///
-    /// Example:
+    /// ### Example
     /// ```swift
     /// let red = try ColorValue(hex: "#FF0000")
     /// let semiTransparent = try ColorValue(hex: "#FF0000FF")
@@ -90,7 +90,7 @@ extension ColorValue {
     ///
     /// Only sRGB colors with numeric components can be converted to hex format.
     ///
-    /// Example:
+    /// ### Example
     /// ```swift
     /// let hex = try ColorValue.red.hex()  // "#FF0000"
     /// let argb = try ColorValue.red.hex(format: .argb)  // "#FFFF0000"

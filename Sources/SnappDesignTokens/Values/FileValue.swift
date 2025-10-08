@@ -39,7 +39,7 @@ public enum FileValueURLEncodingFormat: Equatable, Sendable {
 /// Supports both absolute URLs and relative paths. When decoding relative paths, they can
 /// be resolved against a source location URL.
 ///
-/// Example:
+/// ### Example
 /// ```swift
 /// // Absolute URL
 /// let image = FileValue(url: URL(string: "https://example.com/image.png")!)

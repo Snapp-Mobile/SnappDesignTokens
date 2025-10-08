@@ -11,7 +11,7 @@ import Foundation
 /// Generic wrapper supporting DTCG tokens that may contain either a single value or multiple
 /// values. Automatically handles encoding/decoding between single value and array representations.
 ///
-/// Example:
+/// ### Example
 /// ```swift
 /// // Single value
 /// let single = TokenCollection(values: [.red])  // Encodes as "#FF0000"

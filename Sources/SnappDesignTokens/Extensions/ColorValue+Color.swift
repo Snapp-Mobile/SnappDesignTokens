@@ -12,7 +12,7 @@ import Foundation
 /// to specify color space, components, and hex values manually. Use `.red`
 /// instead of constructing full ``ColorValue`` instances.
 ///
-/// Example:
+/// ### Example
 /// ```swift
 /// // Without helpers:
 /// let color = ColorValue(colorSpace: .srgb, components: [1, 0, 0], alpha: 1, hex: "#FF0000")

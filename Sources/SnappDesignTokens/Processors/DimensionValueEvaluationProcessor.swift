@@ -12,7 +12,7 @@ import Foundation
 /// to constant dimension values using pluggable ``DimensionValueEvaluator``
 /// implementations. Supports arithmetic and NSExpression-based evaluation.
 ///
-/// Example:
+/// ### Example
 /// ```swift
 /// // Token with expression: { "spacing": "16px * 1.5" }
 ///

@@ -11,7 +11,7 @@ import Foundation
 /// Groups provide organizational structure for tokens and support type inheritance.
 /// Child tokens inherit the `$type` property from their parent group if not explicitly set.
 ///
-/// Example:
+/// ### Example
 /// ```swift
 /// let group: TokenGroup = [
 ///     "primary": .value(.color(.red)),

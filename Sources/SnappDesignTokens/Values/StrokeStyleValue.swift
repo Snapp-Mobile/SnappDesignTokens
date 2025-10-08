@@ -12,7 +12,7 @@ import Foundation
 /// (solid, dashed, dotted, etc.) or custom dash patterns with line cap control.
 /// Follows CSS "line style" values with implementation-specific rendering.
 ///
-/// Example:
+/// ### Example
 /// ```swift
 /// // Simple line style
 /// let solid: StrokeStyleValue = .line(.solid)
@@ -76,7 +76,7 @@ public enum StrokeStyleValue: Codable, Equatable, Sendable, CompositeToken {
     /// DTCG composite structure defining stroke dash pattern using dimension
     /// array specifying alternating dash/gap segment lengths with line cap style.
     ///
-    /// Example:
+    /// ### Example
     /// ```swift
     /// let pattern = DashPattern(
     ///     dashArray: [

@@ -16,7 +16,7 @@ import Foundation
 /// - ``DimensionConstant`` (value+unit or bare number)
 /// - ``DurationValue`` (value+unit or bare number)
 ///
-/// Example:
+/// ### Example
 /// ```swift
 /// let measurement = TokenMeasurement(value: 16, unit: DimensionUnit.px)
 ///

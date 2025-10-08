@@ -12,7 +12,7 @@ import Foundation
 /// Each sub-value can be either an explicit value or a reference to another token using
 /// `{group.token}` syntax. This type provides the wrapper for that flexibility.
 ///
-/// Example:
+/// ### Example
 /// ```swift
 /// // Direct value
 /// let color: CompositeTokenValue<ColorValue> = .value(.red)

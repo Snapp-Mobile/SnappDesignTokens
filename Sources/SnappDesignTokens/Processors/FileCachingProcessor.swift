@@ -15,7 +15,7 @@ import UniformTypeIdentifiers
 /// images and fonts with type-specific caching. Logs errors for failed
 /// downloads while preserving original tokens.
 ///
-/// Example:
+/// ### Example
 /// ```swift
 /// let manager = AssetsManager(themeName: "myTheme")
 /// let processor = FileCachingProcessor(assetsManager: manager)

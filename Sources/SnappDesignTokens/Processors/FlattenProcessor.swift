@@ -12,7 +12,7 @@ import Foundation
 /// configurable path naming strategies (dot-separated, camelCase, snake_case).
 /// Supports optional depth limiting to preserve specific group levels.
 ///
-/// Example:
+/// ### Example
 /// ```swift
 /// // Input: { "color": { "primary": { "base": "#ff0000" } } }
 ///
@@ -76,7 +76,7 @@ extension FlattenProcessor {
     ///
     /// Determines how nested group paths are combined into single keys.
     ///
-    /// Example:
+    /// ### Example
     /// ```swift
     /// // Path: ["color", "primary", "base"]
     /// // .joined(separator: ".") => "color.primary.base"
