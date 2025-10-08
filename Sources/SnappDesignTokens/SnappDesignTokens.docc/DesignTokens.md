@@ -27,6 +27,7 @@ Primitive tokens have singular values:
 - ``DurationValue`` - Time durations for animations (seconds, milliseconds)
 - ``CubicBezierValue`` - Animation timing curves
 - ``NumberValue`` - Unitless numeric values
+- ``FileValue`` - File references for external assets
 
 #### Composite Types
 

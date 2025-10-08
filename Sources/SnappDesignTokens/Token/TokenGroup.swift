@@ -6,20 +6,6 @@
 
 import Foundation
 
-/// A collection of design tokens organized hierarchically.
-///
-/// Groups provide organizational structure for tokens and support type inheritance.
-/// Child tokens inherit the `$type` property from their parent group if not explicitly set.
-///
-/// ### Example
-/// ```swift
-/// let group: TokenGroup = [
-///     "primary": .value(.color(.red)),
-///     "spacing": .group([
-///         "small": .value(.dimension(.constant(.init(value: 8, unit: .px))))
-///     ])
-/// ]
-/// ```
 public typealias TokenGroup = [String: Token]
 
 extension TokenGroup {
