@@ -11,7 +11,7 @@ import Foundation
 /// Represents mathematical operations and grouping symbols used in DTCG
 /// dimension expression evaluation.
 ///
-/// Example:
+/// ### Example
 /// ```swift
 /// let expr = [
 ///     .value(.init(value: 16, unit: .px)),

@@ -12,7 +12,7 @@ import Foundation
 /// The type can be set directly on a token, inherited from a parent group, or determined
 /// by a referenced token's type.
 ///
-/// Example:
+/// ### Example
 /// ```swift
 /// let colorType = TokenType.color
 /// let customType = TokenType(rawValue: "customType")

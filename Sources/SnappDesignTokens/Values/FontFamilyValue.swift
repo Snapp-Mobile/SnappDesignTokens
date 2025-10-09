@@ -4,10 +4,6 @@
 //  Created by Volodymyr Voiko on 25.03.2025.
 //
 
-/// Represents a font family token value with optional fallbacks.
-///
-/// Supports single font name or array of names ordered from most to least preferred.
-/// Values decode from either string or string array as shown in DTCG specification.
 public struct FontFamilyValue: Codable, Equatable, Sendable, ExpressibleByStringLiteral {
     /// Font names ordered from most to least preferred.
     public let names: [String]

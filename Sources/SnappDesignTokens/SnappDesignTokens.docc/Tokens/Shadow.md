@@ -1,5 +1,12 @@
 # ``ShadowValue``
 
+Represents a single shadow layer for drop or inner shadows.
+
+## Overview
+
+Defines shadow appearance with color, offsets, blur, and spread. Multiple instances
+can be layered for complex effects. All properties support direct values and token aliases.
+
 ## Examples
 
 ### Single shadow

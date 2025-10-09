@@ -1,5 +1,12 @@
 # ``TransitionValue``
 
+Represents an animated transition between two states.
+
+## Overview
+
+Defines transition timing with duration, delay, and timing function. All properties
+support direct values and token aliases.
+
 ## Examples
 
 ### Direct values

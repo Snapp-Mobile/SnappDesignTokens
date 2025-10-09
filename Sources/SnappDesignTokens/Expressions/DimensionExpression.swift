@@ -12,7 +12,7 @@ import Foundation
 /// of elements (values, operators, parentheses, aliases). Encoded as string,
 /// decoded into structured element array for evaluation.
 ///
-/// Example:
+/// ### Example
 /// ```swift
 /// // JSON: "16px * 1.5"
 /// // Decoded to:

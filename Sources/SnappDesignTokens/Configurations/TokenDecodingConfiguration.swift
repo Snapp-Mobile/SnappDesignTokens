@@ -40,7 +40,7 @@ public struct TokenDecodingConfiguration: Equatable, Sendable {
     /// Maps custom type names to standard DTCG types. Enables parsing tokens
     /// with vendor-specific type names (e.g., `icon` → `file`).
     ///
-    /// Example:
+    /// ### Example
     /// ```swift
     /// customTypeMapping: [
     ///     .custom("icon"): .file,

@@ -15,7 +15,7 @@ import Foundation
 /// Per DTCG specification, tools must resolve references by looking up the referenced
 /// token's value. Chained references are supported, but circular references are not allowed.
 ///
-/// Example:
+/// ### Example
 /// ```swift
 /// var border = BorderValue(
 ///     color: .alias(TokenPath("color", "primary")),

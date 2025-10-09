@@ -14,7 +14,7 @@
 /// 1. Convert source value to base units: `value * sourceBaseValue`
 /// 2. Convert base units to target: `baseValue / targetBaseValue`
 ///
-/// Example:
+/// ### Example
 /// ```swift
 /// let converter = DefaultDimensionValueConverter(remBaseValue: 16, pxBaseValue: 1)
 /// let px = DimensionConstant(value: 16, unit: .px)

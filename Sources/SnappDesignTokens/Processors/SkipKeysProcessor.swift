@@ -12,7 +12,7 @@ import Foundation
 /// for excluding metadata, private tokens, or DTCG special properties before
 /// further processing.
 ///
-/// Example:
+/// ### Example
 /// ```swift
 /// let processor: TokenProcessor = .skipKeys("$schema", "$metadata", "_internal")
 /// let processed = try await processor.process(token)

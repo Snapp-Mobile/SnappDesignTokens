@@ -6,11 +6,6 @@
 
 import Foundation
 
-/// Represents a single color stop in a gradient.
-///
-/// Used within ``GradientValue`` to define color transitions. Each stop specifies
-/// a color and position (0-1, where 0 is start and 1 is end). Both properties
-/// support direct values and token aliases.
 public struct GradientColor: Equatable, Sendable, Codable {
     /// Color at this gradient stop as ``CompositeTokenValue`` of ``ColorValue``.
     public let color: CompositeTokenValue<ColorValue>

@@ -13,7 +13,7 @@ import Foundation
 ///
 /// Per DTCG specification, a millisecond is one thousandth of a second.
 ///
-/// Example:
+/// ### Example
 /// ```swift
 /// let seconds = DurationUnit.second
 /// let milliseconds = DurationUnit.millisecond

@@ -11,7 +11,7 @@
 ///
 /// Default implementation: ``DefaultDimensionValueConverter``
 ///
-/// Example:
+/// ### Example
 /// ```swift
 /// struct CustomConverter: DimensionValueConverter {
 ///     func convert(_ constant: DimensionConstant, to targetUnit: DimensionUnit) -> DimensionConstant {

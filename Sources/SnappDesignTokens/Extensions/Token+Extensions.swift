@@ -33,7 +33,7 @@ extension Token {
     /// Traverses the token tree following the path to find the referenced token. Handles
     /// chained aliases and detects circular references.
     ///
-    /// Example:
+    /// ### Example
     /// ```swift
     /// let token = Token.group([
     ///     "base": .group(["color": .value(.color(.red))]),

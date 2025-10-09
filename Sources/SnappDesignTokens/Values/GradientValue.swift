@@ -11,7 +11,7 @@ import Foundation
 /// DTCG composite token defining color transitions across an axis using an array of
 /// ``GradientColor`` stops. Each stop specifies a color and position (0-1 range).
 ///
-/// Example:
+/// ### Example
 /// ```swift
 /// // Simple blue-to-red gradient
 /// let gradient: GradientValue = [

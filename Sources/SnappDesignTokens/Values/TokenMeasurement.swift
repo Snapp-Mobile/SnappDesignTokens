@@ -16,7 +16,7 @@ import Foundation
 /// - ``DimensionConstant`` (``DimensionUnit``: px, rem)
 /// - ``DurationValue`` (``DurationUnit``: s, ms)
 ///
-/// Example:
+/// ### Example
 /// ```swift
 /// // Dimension measurement
 /// let spacing = TokenMeasurement(value: 16, unit: DimensionUnit.px)

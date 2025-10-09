@@ -6,10 +6,6 @@
 
 import Foundation
 
-/// Represents an animated transition between two states.
-///
-/// Defines transition timing with duration, delay, and timing function. All properties
-/// support direct values and token aliases.
 public struct TransitionValue: Equatable, Sendable, Codable, CompositeToken {
     /// Transition duration as ``CompositeTokenValue`` of ``DurationValue``.
     public let duration: CompositeTokenValue<DurationValue>

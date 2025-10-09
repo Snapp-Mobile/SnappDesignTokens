@@ -15,11 +15,6 @@ public enum FontWeightValueDecodingError: Error, Equatable {
     case invalidAlias(String)
 }
 
-/// Represents a font weight using numeric values or named aliases.
-///
-/// Supports numeric values (1-1000) or named aliases like "bold" or "extra-light".
-/// Decodes from either number or string. Values outside 1-1000 are rejected per
-/// DTCG specification.
 public struct FontWeightValue: RawRepresentable, Codable, Equatable,
     Sendable
 {

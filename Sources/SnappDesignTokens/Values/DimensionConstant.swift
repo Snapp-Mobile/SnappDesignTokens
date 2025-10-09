@@ -12,7 +12,7 @@ import Foundation
 /// position, spacing, radius, or thickness. This is a ``TokenMeasurement`` specialized
 /// for ``DimensionUnit`` (px, rem).
 ///
-/// Example:
+/// ### Example
 /// ```swift
 /// // 16 pixels
 /// let spacing = DimensionConstant(value: 16, unit: .px)
