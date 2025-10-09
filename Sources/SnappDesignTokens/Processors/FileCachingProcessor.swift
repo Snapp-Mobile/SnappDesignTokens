@@ -25,14 +25,14 @@ import UniformTypeIdentifiers
 ///
 /// - Note: Non-file tokens pass through unchanged. Failed downloads are logged
 ///   and original token is preserved.
-struct FileCachingProcessor: TokenProcessor {
+public struct FileCachingProcessor: TokenProcessor {
     /// Assets manager for downloading and caching files as ``AssetsManager``.
     let assetsManager: AssetsManager
 
     /// Creates a file caching processor.
     ///
     /// - Parameter assetsManager: Assets manager instance for file operations
-    init(assetsManager: AssetsManager) {
+    public init(assetsManager: AssetsManager) {
         self.assetsManager = assetsManager
     }
 
@@ -44,7 +44,7 @@ struct FileCachingProcessor: TokenProcessor {
     ///
     /// - Parameter token: Token tree to process
     /// - Returns: Token with file URLs replaced by local cached paths
-    func process(_ token: Token) async throws -> Token {
+    public func process(_ token: Token) async throws -> Token {
         guard case let .value(.file(fileInfo)) = token else {
             return token
         }

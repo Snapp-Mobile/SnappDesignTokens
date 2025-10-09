@@ -46,10 +46,28 @@ Composite tokens combine multiple sub-values in pre-defined structures:
 - **Token aliases**: Supports `{group.token}` reference syntax
 - **Alias resolution**: Resolves token references to actual values
 - **Expression evaluation**: Evaluates mathematical expressions in dimension values (e.g., `"16px * 1.5"`, `"{spacing.base} * 2"`)
+- **Processing pipeline**: Modular processors for transforming token trees (resolve aliases, evaluate expressions, convert units, flatten hierarchies)
 - **Comprehensive validation**: Type checking per DTCG specification
 - **Extensions support**: Handles `$extensions` for custom metadata
 
 ## Topics
 
-### Guides
-- <doc:ExpressionEvaluation>
+### Primitive Types
+
+- ``ColorValue``
+- ``DimensionValue``
+- ``FontFamilyValue``
+- ``FontWeightValue``
+- ``DurationValue``
+- ``CubicBezierValue``
+- ``NumberValue``
+- ``FileValue``
+
+### Composite Types
+
+- ``BorderValue``
+- ``ShadowValue``
+- ``GradientValue``
+- ``TransitionValue``
+- ``TypographyValue``
+- ``StrokeStyleValue``
