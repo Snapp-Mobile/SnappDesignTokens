@@ -33,7 +33,7 @@ struct DimensionConstantСodableTests {
                 }
                 """,
                 .init(value: 10, unit: .rem)
-            )
+            ),
         ] as [(String, DimensionConstant)]
     )
     func testDecodingEncoding(

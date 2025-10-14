@@ -54,7 +54,11 @@ struct NSExpressionValueEvaluatorTests {
             ),
         ]
     )
-    func testSuccessEvaluation(elements: [DimensionExpressionElement], expectedValue: Double, expectedUnit: DimensionUnit)
+    func testSuccessEvaluation(
+        elements: [DimensionExpressionElement],
+        expectedValue: Double,
+        expectedUnit: DimensionUnit
+    )
         async throws
     {
         let expression = DimensionExpression(elements: elements)

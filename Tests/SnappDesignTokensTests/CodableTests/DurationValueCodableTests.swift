@@ -23,8 +23,9 @@ struct DurationValueCodableTests {
             (
                 #"{"unit":"s","value":1.5}"#,
                 .init(value: 1.5, unit: .second)
-            )
-        ] as [(String, DurationValue)])
+            ),
+        ] as [(String, DurationValue)]
+    )
     func testSuccessfulDecodingEncoding(
         valueString: String,
         expectedValue: DurationValue
@@ -40,7 +41,7 @@ struct DurationValueCodableTests {
         #"{ "value": 100, "unit": "sec" }"#,
         #"{ "value": "", "unit": "s" }"#,
         #"{ "value": {}, "unit": {} }"#,
-        "{}"
+        "{}",
     ])
     func testFailingDecoding(
         valueString: String

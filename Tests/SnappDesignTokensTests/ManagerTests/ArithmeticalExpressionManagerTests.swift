@@ -256,7 +256,6 @@ struct ArithmeticalExpressionManagerTests {
         #expect(throws: expectedError) { _ = try evaluateFormula(input) }
     }
 
-
     @Test
     func testInvalidSyntax_multipleDecimal() async throws {
         let expectedError = DimensionValueEvaluationError.invalidSyntax("Multiple decimal points in number")

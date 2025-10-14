@@ -43,7 +43,8 @@ struct ResolveAliasesTokenProcessorTests {
     ])
     func resolveAliases(json: String, expectedToken: Token) async throws {
         let token: Token = try json.decode()
-        let resolvedAliasesToken = try await ResolveAliasesTokenProcessor
+        let resolvedAliasesToken =
+            try await ResolveAliasesTokenProcessor
             .resolveAliases
             .process(token)
         #expect(resolvedAliasesToken == expectedToken)

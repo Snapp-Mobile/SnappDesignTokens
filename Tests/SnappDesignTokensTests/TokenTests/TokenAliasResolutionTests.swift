@@ -18,7 +18,8 @@ struct TokenAliasResolutionTests {
                     "color2": .alias(TokenPath(["base", "color1"])),
                     "circular": .alias(TokenPath(["base", "circular"])),
                     "dimension1": .value(
-                        .dimension(.constant(.init(value: 1, unit: .px)))),
+                        .dimension(.constant(.init(value: 1, unit: .px)))
+                    ),
                 ]
             ),
             "color": .alias(TokenPath(["base", "color2"])),
@@ -41,7 +42,7 @@ struct TokenAliasResolutionTests {
                         .alias(TokenPath(["base", "color1"]))
                     )
                 )
-            )
+            ),
         ]
     )
 
@@ -78,7 +79,7 @@ struct TokenAliasResolutionTests {
             (["invalid"], .invalidReference("invalid")),
             (["invalidValue"], .invalidValueForReference),
             (["circular"], .circularReference),
-            (["invalidExpressionValue"], .invalidValueForReference)
+            (["invalidExpressionValue"], .invalidValueForReference),
         ] as [([String], TokenResolutionError)]
     )
     func testResolveAliasesFailing(
