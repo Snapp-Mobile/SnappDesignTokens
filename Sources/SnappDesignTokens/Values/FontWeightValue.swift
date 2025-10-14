@@ -131,7 +131,8 @@ public struct FontWeightValue: RawRepresentable, Codable, Equatable,
             let rawStringValue = try container.decode(String.self)
             guard let alias = Alias(rawValue: rawStringValue) else {
                 throw FontWeightValueDecodingError.invalidAlias(
-                    rawStringValue)
+                    rawStringValue
+                )
             }
             self.init(alias: alias)
         }

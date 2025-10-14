@@ -31,8 +31,7 @@ public struct TokenEncodingConfiguration: Equatable, Sendable {
     ///
     /// Controls encoding format for individual token value types (colors,
     /// files, measurements). When `nil`, uses default formats.
-    public let tokenValueEncodingConfiguration:
-        TokenValueEncodingConfiguration?
+    public let tokenValueEncodingConfiguration: TokenValueEncodingConfiguration?
 
     /// Creates a token encoding configuration.
     ///

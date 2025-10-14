@@ -75,7 +75,6 @@ public enum TokenColorSpace: String, CaseIterable, Sendable, Codable {
     /// D65 corresponds to average daylight and is commonly used for digital displays and video.
     case xyzD65 = "xyz-d65"
 
-
     /// The CIELAB color space (Lab).
     ///
     /// CIELAB (or L*a*b*) is a color space that describes all the colors visible to the human eye.

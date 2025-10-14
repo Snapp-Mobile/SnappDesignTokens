@@ -134,7 +134,8 @@ extension FlattenProcessor.PathConversionStrategy {
         case .joined(let separator):
             return paths.joined(separator: separator)
         case .convertToCamelCase, .convertToSnakeCase:
-            return paths
+            return
+                paths
                 .enumerated()
                 .map({ index, path in
                     var path = path

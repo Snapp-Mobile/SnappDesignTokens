@@ -170,15 +170,15 @@ final public class ArithmeticalExpressionManager<T: Numeric> {
 
         // Handle parentheses
         if currentChar == "(" {
-            advance() // Consume '('
-            let result = try expression() // Parse the expression inside parentheses
+            advance()  // Consume '('
+            let result = try expression()  // Parse the expression inside parentheses
 
             // After parsing the expression, we expect a closing parenthesis
             if currentChar != ")" {
                 throw .invalidSyntax("Expected closing parenthesis at position \(position)")
             }
 
-            advance() // Consume ')'
+            advance()  // Consume ')'
             return result
         }
 

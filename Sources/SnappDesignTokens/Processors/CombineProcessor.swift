@@ -63,7 +63,7 @@ extension TokenProcessor {
     ///
     /// - Parameter other: Processor to execute after this processor
     /// - Returns: Combined processor executing both in sequence
-    public func combine( _ other: TokenProcessor) -> TokenProcessor {
+    public func combine(_ other: TokenProcessor) -> TokenProcessor {
         .combine(self, other)
     }
 }

@@ -129,10 +129,10 @@ extension Token {
                 }
                 return .array(tokens)
             case .group,
-                    .value(.dimension), .value(.color), .value(.duration),
-                    .value(.file), .value(.fontFamily), .value(.fontWeight),
-                    .value(.number), .value(.gradient), .value(.cubicBezier),
-                    .unknown:
+                .value(.dimension), .value(.color), .value(.duration),
+                .value(.file), .value(.fontFamily), .value(.fontWeight),
+                .value(.number), .value(.gradient), .value(.cubicBezier),
+                .unknown:
                 return element
             }
         }

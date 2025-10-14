@@ -107,7 +107,7 @@ public struct TokenPath: Decodable, Encodable, Hashable, RawRepresentable,
         let startsWithOpeningBracket = rawString.hasPrefix(Self.openingBracket)
         let endsWithClosingBracket = rawString.hasSuffix(Self.closingBracket)
         let startsAndEndsWithBrackets = startsWithOpeningBracket && endsWithClosingBracket
-        
+
         let openBracketsCount = rawString.count(where: { String($0) == Self.openingBracket })
         let closeBracketsCount = rawString.count(where: { String($0) == Self.closingBracket })
         let hasSingleOpenAndCloseBracket = openBracketsCount == 1 && closeBracketsCount == 1
