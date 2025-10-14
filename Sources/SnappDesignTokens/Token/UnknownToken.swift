@@ -40,6 +40,13 @@ public struct UnknownToken: RawRepresentable, Codable, Equatable, Sendable, Expr
         self.init(rawValue: value)
     }
 
+    /// Creates a new instance by decoding from the given decoder.
+    ///
+    /// Attempts to decode a string value and initializes the instance with that raw value.
+    /// If decoding fails, initializes with `nil`.
+    ///
+    /// - Parameter decoder: The decoder to read data from.
+    /// - Throws: An error if the decoder is unable to provide a container.
     public init(from decoder: any Decoder) throws {
         self.init(rawValue: try? String(from: decoder))
     }

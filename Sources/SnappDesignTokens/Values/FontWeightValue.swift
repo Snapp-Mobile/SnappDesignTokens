@@ -15,9 +15,9 @@ public enum FontWeightValueDecodingError: Error, Equatable {
     case invalidAlias(String)
 }
 
-public struct FontWeightValue: RawRepresentable, Codable, Equatable,
-    Sendable
-{
+// swift-format-ignore: AllPublicDeclarationsHaveDocumentation
+// Reason: Documentation is in `FontWeight.md`
+public struct FontWeightValue: RawRepresentable, Codable, Equatable, Sendable {
     private static let validRange: ClosedRange<UInt> = 1...1000
 
     /// Named aliases for common font weights.

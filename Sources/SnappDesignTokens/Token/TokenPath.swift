@@ -14,8 +14,15 @@ public enum TokenPathParsingError: String, Error, LocalizedError, Equatable {
     /// Token reference path is empty after removing braces.
     case emptyAlias = "Alias value cannot be empty"
 
+    /// A localized description of the error.
     public var errorDescription: String? { rawValue }
 
+    /// Returns a Boolean value indicating whether two errors are equal.
+    ///
+    /// - Parameters:
+    ///   - lhs: A token path parsing error to compare.
+    ///   - rhs: Another token path parsing error to compare.
+    /// - Returns: `true` if the errors have the same localized description.
     public static func == (
         lhs: TokenPathParsingError,
         rhs: TokenPathParsingError
@@ -70,6 +77,14 @@ public struct TokenPath: Decodable, Encodable, Hashable, RawRepresentable,
         self.init(paths)
     }
 
+    /// Creates a new instance by decoding from the given decoder.
+    ///
+    /// Decodes a string value from a single value container and initializes the instance
+    /// from that string.
+    ///
+    /// - Parameter decoder: The decoder to read data from.
+    /// - Throws: `DecodingError.dataCorrupted` if the string value has an invalid format,
+    ///   or other decoding errors if the container cannot be read.
     public init(from decoder: any Decoder) throws {
         let container = try decoder.singleValueContainer()
         let stringValue = try container.decode(String.self)
@@ -87,6 +102,12 @@ public struct TokenPath: Decodable, Encodable, Hashable, RawRepresentable,
         }
     }
 
+    /// Creates a new instance from the specified raw value.
+    ///
+    /// Attempts to initialize from the raw value string. Returns `nil` if the format
+    /// is invalid.
+    ///
+    /// - Parameter rawValue: The raw string value to parse.
     public init?(rawValue: String) {
         try? self.init(from: rawValue)
     }
@@ -150,6 +171,10 @@ public struct TokenPath: Decodable, Encodable, Hashable, RawRepresentable,
         return copy
     }
 
+    /// Encodes this instance into the given encoder.
+    ///
+    /// - Parameter encoder: The encoder to write data to.
+    /// - Throws: An error if encoding fails.
     public func encode(to encoder: any Encoder) throws {
         try rawValue.encode(to: encoder)
     }

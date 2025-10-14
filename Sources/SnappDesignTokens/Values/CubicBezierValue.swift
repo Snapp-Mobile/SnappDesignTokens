@@ -34,6 +34,8 @@ public struct CubicBezierValueDecodingError: Error, Equatable {
     }
 }
 
+// swift-format-ignore: AllPublicDeclarationsHaveDocumentation
+// Reason: Documentation is in `Cubic Bezier.md`
 public struct CubicBezierValue: Equatable, Codable, Sendable {
     private static let xRange: ClosedRange<Double> = 0...1
 

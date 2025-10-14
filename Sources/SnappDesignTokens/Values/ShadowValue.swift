@@ -6,6 +6,8 @@
 
 import Foundation
 
+// swift-format-ignore: AllPublicDeclarationsHaveDocumentation
+// Reason: Documentation is in `Shadow.md`
 public struct ShadowValue: Codable, Equatable, Sendable, CompositeToken {
     /// Shadow color as ``CompositeTokenValue`` of ``ColorValue``.
     public let color: CompositeTokenValue<ColorValue>
