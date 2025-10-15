@@ -6,6 +6,8 @@
 
 import Foundation
 
+// swift-format-ignore: AllPublicDeclarationsHaveDocumentation
+// Reason: Documentation is in `Transition.md`
 public struct TransitionValue: Equatable, Sendable, Codable, CompositeToken {
     /// Transition duration as ``CompositeTokenValue`` of ``DurationValue``.
     public let duration: CompositeTokenValue<DurationValue>

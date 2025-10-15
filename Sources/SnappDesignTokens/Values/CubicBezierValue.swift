@@ -34,6 +34,8 @@ public struct CubicBezierValueDecodingError: Error, Equatable {
     }
 }
 
+// swift-format-ignore: AllPublicDeclarationsHaveDocumentation
+// Reason: Documentation is in `Cubic Bezier.md`
 public struct CubicBezierValue: Equatable, Codable, Sendable {
     private static let xRange: ClosedRange<Double> = 0...1
 
@@ -64,7 +66,7 @@ public struct CubicBezierValue: Equatable, Codable, Sendable {
     ///   - y1: Y coordinate of first control point
     ///   - x2: X coordinate of second control point (must be 0-1)
     ///   - y2: Y coordinate of second control point
-    public init (x1: Double, y1: Double, x2: Double, y2: Double) {
+    public init(x1: Double, y1: Double, x2: Double, y2: Double) {
         self.x1 = x1
         self.y1 = y1
         self.x2 = x2

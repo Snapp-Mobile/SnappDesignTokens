@@ -6,7 +6,7 @@
 
 import Foundation
 import OSLog
- 
+
 extension TokenGroup {
     /// Resolves an alias reference to its actual token value.
     ///

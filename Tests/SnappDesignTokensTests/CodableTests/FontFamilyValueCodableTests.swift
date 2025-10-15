@@ -18,7 +18,8 @@ struct FontFamilyValueCodableTests {
                 .init("Helvetica", "Arial", "sans-serif")
             ),
 
-        ] as [(String, FontFamilyValue)])
+        ] as [(String, FontFamilyValue)]
+    )
     func testSuccessfulFontFamilyValueDecodingEncoding(
         valueString: String,
         expectedValue: FontFamilyValue
@@ -34,7 +35,7 @@ struct FontFamilyValueCodableTests {
         "{}",
         "0",
         "[0]",
-        "[{}]"
+        "[{}]",
     ])
     func testFailingFontFamilyValueDecoding(
         valueString: String

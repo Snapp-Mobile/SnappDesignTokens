@@ -31,7 +31,7 @@ struct DimensionValueConverterTests {
                 DimensionConstant(value: 3, unit: .rem),
                 .rem,
                 DimensionConstant(value: 3, unit: .rem)
-            )
+            ),
         ]
             as [(
                 DimensionConstant,

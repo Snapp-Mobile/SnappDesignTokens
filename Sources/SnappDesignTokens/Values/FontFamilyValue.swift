@@ -4,6 +4,8 @@
 //  Created by Volodymyr Voiko on 25.03.2025.
 //
 
+// swift-format-ignore: AllPublicDeclarationsHaveDocumentation
+// Reason: Documentation is in `FontFamily.md`
 public struct FontFamilyValue: Codable, Equatable, Sendable, ExpressibleByStringLiteral {
     /// Font names ordered from most to least preferred.
     public let names: [String]

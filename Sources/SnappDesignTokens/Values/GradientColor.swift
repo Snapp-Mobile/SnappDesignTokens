@@ -6,6 +6,8 @@
 
 import Foundation
 
+// swift-format-ignore: AllPublicDeclarationsHaveDocumentation
+// Reason: Documentation is in `Gradient.md`
 public struct GradientColor: Equatable, Sendable, Codable {
     /// Color at this gradient stop as ``CompositeTokenValue`` of ``ColorValue``.
     public let color: CompositeTokenValue<ColorValue>

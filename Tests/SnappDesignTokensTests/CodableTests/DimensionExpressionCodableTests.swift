@@ -137,7 +137,9 @@ struct DimensionExpressionCodableTests {
         ]
     )
     func testDecodingInvalidElementToken(json: String) throws {
-        let expectedError = DimensionExpressionParsingError.invalidElement(json.replacingOccurrences(of: #"""#, with: ""))
+        let expectedError = DimensionExpressionParsingError.invalidElement(
+            json.replacingOccurrences(of: #"""#, with: "")
+        )
         #expect(throws: expectedError) { let _: DimensionExpression = try json.decode() }
     }
 

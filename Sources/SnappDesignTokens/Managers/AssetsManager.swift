@@ -58,8 +58,8 @@ public actor AssetsManager {
     ///   - themeName: Theme identifier for cache organization (default: `"default"`)
     public init(
         _ fileManager: FileManager = .default,
-         themeCacheRootURL: URL? = nil,
-         themeName: String = "default"
+        themeCacheRootURL: URL? = nil,
+        themeName: String = "default"
     ) {
         self.fileManager = fileManager
         var isDirectory: ObjCBool = true

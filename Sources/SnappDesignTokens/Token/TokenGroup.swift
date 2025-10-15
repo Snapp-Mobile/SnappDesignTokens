@@ -6,6 +6,8 @@
 
 import Foundation
 
+// swift-format-ignore: AllPublicDeclarationsHaveDocumentation
+// Reason: Documentation is in `Group.md`
 public typealias TokenGroup = [String: Token]
 
 extension TokenGroup {

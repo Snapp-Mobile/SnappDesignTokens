@@ -35,14 +35,17 @@ struct TypographyCodableTests {
                 .init(
                     fontFamily: .value(.init("Helvetica")),
                     fontSize: .value(
-                        .constant(.init(value: 16, unit: .px))),
+                        .constant(.init(value: 16, unit: .px))
+                    ),
                     fontWeight: .value(.bold),
                     letterSpacing: .value(
-                        .constant(.init(value: 0.1, unit: .px))),
+                        .constant(.init(value: 0.1, unit: .px))
+                    ),
                     lineHeight: .value(1.2)
                 )
             )
-        ] as [(String, TypographyValue)])
+        ] as [(String, TypographyValue)]
+    )
     func testTypographyValueDecodingEncoding(
         valueString: String,
         expectedValue: TypographyValue

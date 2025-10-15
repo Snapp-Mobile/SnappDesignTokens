@@ -119,6 +119,14 @@ public enum TokenValue: Decodable, DecodableWithConfiguration, Encodable,
         }
     }
 
+    /// Creates a new instance by decoding from the given decoder.
+    ///
+    /// Constructs a token value decoding configuration from the decoder's settings,
+    /// including parent type, file decoding configuration, and custom type mappings.
+    ///
+    /// - Parameter decoder: The decoder to read data from.
+    /// - Throws: An error if reading from the decoder fails, or if the data is corrupted
+    ///   or otherwise invalid.
     public init(from decoder: any Decoder) throws {
         try self.init(
             from: decoder,
@@ -132,6 +140,13 @@ public enum TokenValue: Decodable, DecodableWithConfiguration, Encodable,
         )
     }
 
+    /// Encodes this instance into the given encoder.
+    ///
+    /// Uses the encoder's token value encoding configuration, falling back to the
+    /// default configuration if none is specified.
+    ///
+    /// - Parameter encoder: The encoder to write data to.
+    /// - Throws: An error if any values are invalid for the given encoder's format.
     public func encode(to encoder: any Encoder) throws {
         try self.encode(
             to: encoder,

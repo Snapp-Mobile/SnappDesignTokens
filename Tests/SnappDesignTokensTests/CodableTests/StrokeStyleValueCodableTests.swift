@@ -40,7 +40,7 @@ struct StrokeStyleValueCodableTests {
                     .init(
                         dashArray: [
                             .value(.constant(.init(value: 0.5, unit: .rem))),
-                            .value(.constant(.init(value: 0.25, unit: .rem)))
+                            .value(.constant(.init(value: 0.25, unit: .rem))),
                         ],
                         lineCap: .round
                     )
@@ -63,12 +63,12 @@ struct StrokeStyleValueCodableTests {
                     .init(
                         dashArray: [
                             .alias(TokenPath("dash-length-medium")),
-                            .value(.constant(.init(value: 0.25, unit: .rem)))
+                            .value(.constant(.init(value: 0.25, unit: .rem))),
                         ],
                         lineCap: .butt
                     )
                 )
-            )
+            ),
         ] as [(String, StrokeStyleValue)]
     )
     func testSuccessfulDecodingEncoding(

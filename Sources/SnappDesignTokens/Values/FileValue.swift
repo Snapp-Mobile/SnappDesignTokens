@@ -33,6 +33,8 @@ public enum FileValueURLEncodingFormat: Equatable, Sendable {
     case relative(from: URL?)
 }
 
+// swift-format-ignore: AllPublicDeclarationsHaveDocumentation
+// Reason: Documentation is in `File.md`
 public struct FileValue: DecodableWithConfiguration, Decodable,
     EncodableWithConfiguration, Encodable,
     Equatable, Sendable

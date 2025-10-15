@@ -6,6 +6,8 @@
 
 import Foundation
 
+// swift-format-ignore: AllPublicDeclarationsHaveDocumentation
+// Reason: Documentation is in `Typography.md`
 public struct TypographyValue: Codable, Equatable, Sendable, CompositeToken {
     /// Font family as ``CompositeTokenValue`` of ``FontFamilyValue``.
     public let fontFamily: CompositeTokenValue<FontFamilyValue>

@@ -6,6 +6,8 @@
 
 import Foundation
 
+// swift-format-ignore: AllPublicDeclarationsHaveDocumentation
+// Reason: Documentation is in `Color.md`
 public struct ColorValue: Codable, EncodableWithConfiguration, Equatable,
     Sendable
 {

@@ -6,6 +6,8 @@
 
 import Foundation
 
+// swift-format-ignore: AllPublicDeclarationsHaveDocumentation
+// Reason: Documentation is in `StrokeStyle.md`
 public enum StrokeStyleValue: Codable, Equatable, Sendable, CompositeToken {
     /// Predefined stroke line styles.
     ///

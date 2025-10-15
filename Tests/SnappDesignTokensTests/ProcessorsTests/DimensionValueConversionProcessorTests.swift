@@ -23,41 +23,56 @@ struct DimensionValueConversionProcessorTests {
                                     fontSize: .value(.constant(.init(value: 10, unit: .rem))),
                                     fontWeight: .value(.bold),
                                     letterSpacing: .value(.constant(.init(value: 12, unit: .px))),
-                                    lineHeight: .value(12)))),
+                                    lineHeight: .value(12)
+                                )
+                            )
+                        ),
                         "dimension1": .value(
-                            .dimension(.constant(.init(value: 10, unit: .px)))),
+                            .dimension(.constant(.init(value: 10, unit: .px)))
+                        ),
                         "dimension2": .value(
-                            .dimension(.constant(.init(value: 10, unit: .rem)))),
+                            .dimension(.constant(.init(value: 10, unit: .rem)))
+                        ),
                         "dimension3": .value(
                             .dimension(
                                 .expression(
                                     .value(.init(value: 10, unit: .px)),
                                     .operation(.add),
                                     .value(.init(value: 10, unit: .rem))
-                                ))),
+                                )
+                            )
+                        ),
                     ])
                 ]),
                 .px,
                 .group([
                     "base": .group([
-                        "title1": .value(.typography(
-                            TypographyValue(
-                                fontFamily: .value("SFPro"),
-                                fontSize: .value(.constant(.init(value: 160, unit: .px))),
-                                fontWeight: .value(.bold),
-                                letterSpacing: .value(.constant(.init(value: 12, unit: .px))),
-                                lineHeight: .value(12)))),
+                        "title1": .value(
+                            .typography(
+                                TypographyValue(
+                                    fontFamily: .value("SFPro"),
+                                    fontSize: .value(.constant(.init(value: 160, unit: .px))),
+                                    fontWeight: .value(.bold),
+                                    letterSpacing: .value(.constant(.init(value: 12, unit: .px))),
+                                    lineHeight: .value(12)
+                                )
+                            )
+                        ),
                         "dimension1": .value(
-                            .dimension(.constant(.init(value: 10, unit: .px)))),
+                            .dimension(.constant(.init(value: 10, unit: .px)))
+                        ),
                         "dimension2": .value(
-                            .dimension(.constant(.init(value: 160, unit: .px)))),
+                            .dimension(.constant(.init(value: 160, unit: .px)))
+                        ),
                         "dimension3": .value(
                             .dimension(
                                 .expression(
                                     .value(.init(value: 10, unit: .px)),
                                     .operation(.add),
                                     .value(.init(value: 160, unit: .px))
-                                ))),
+                                )
+                            )
+                        ),
                     ])
                 ])
             ),
@@ -65,32 +80,40 @@ struct DimensionValueConversionProcessorTests {
                 .group([
                     "base": .group([
                         "dimension1": .value(
-                            .dimension(.constant(.init(value: 160, unit: .px)))),
+                            .dimension(.constant(.init(value: 160, unit: .px)))
+                        ),
                         "dimension2": .value(
-                            .dimension(.constant(.init(value: 1, unit: .rem)))),
+                            .dimension(.constant(.init(value: 1, unit: .rem)))
+                        ),
                         "dimension3": .value(
                             .dimension(
                                 .expression(
                                     .value(.init(value: 160, unit: .px)),
                                     .operation(.add),
                                     .value(.init(value: 1, unit: .rem))
-                                ))),
+                                )
+                            )
+                        ),
                     ])
                 ]),
                 .rem,
                 .group([
                     "base": .group([
                         "dimension1": .value(
-                            .dimension(.constant(.init(value: 10, unit: .rem)))),
+                            .dimension(.constant(.init(value: 10, unit: .rem)))
+                        ),
                         "dimension2": .value(
-                            .dimension(.constant(.init(value: 1, unit: .rem)))),
+                            .dimension(.constant(.init(value: 1, unit: .rem)))
+                        ),
                         "dimension3": .value(
                             .dimension(
                                 .expression(
                                     .value(.init(value: 10, unit: .rem)),
                                     .operation(.add),
                                     .value(.init(value: 1, unit: .rem))
-                                ))),
+                                )
+                            )
+                        ),
                     ])
                 ])
             ),
@@ -99,11 +122,12 @@ struct DimensionValueConversionProcessorTests {
                 .px,
                 .group(["base": .group(["color": .value(.color(.red))])])
             ),
-        ] as [(
-            Token,
-            DimensionUnit,
-            Token
-        )]
+        ]
+            as [(
+                Token,
+                DimensionUnit,
+                Token
+            )]
     )
     func testConversion(
         token: Token,

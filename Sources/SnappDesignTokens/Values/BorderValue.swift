@@ -6,6 +6,8 @@
 
 import Foundation
 
+// swift-format-ignore: AllPublicDeclarationsHaveDocumentation
+// Reason: Documentation is in `Border.md`
 public struct BorderValue: Equatable, Codable, Sendable, CompositeToken {
     /// Border color as ``CompositeTokenValue`` of ``ColorValue``.
     public let color: CompositeTokenValue<ColorValue>

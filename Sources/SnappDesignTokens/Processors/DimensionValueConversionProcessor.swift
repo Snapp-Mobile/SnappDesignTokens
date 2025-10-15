@@ -58,7 +58,9 @@ public struct DimensionValueConversionProcessor: TokenProcessor {
                         return element
                     }
                     let converted = converter.convert(
-                        elementValue, to: targetUnit)
+                        elementValue,
+                        to: targetUnit
+                    )
                     return .value(converted)
                 }
                 let expression = DimensionExpression(elements: elements)
@@ -69,7 +71,8 @@ public struct DimensionValueConversionProcessor: TokenProcessor {
                     fontSize: converter.convert(typography.fontSize, to: targetUnit),
                     fontWeight: typography.fontWeight,
                     letterSpacing: converter.convert(typography.letterSpacing, to: targetUnit),
-                    lineHeight: typography.lineHeight)
+                    lineHeight: typography.lineHeight
+                )
                 return .value(.typography(typography))
             case .group, .alias, .value, .unknown, .array:
                 return element

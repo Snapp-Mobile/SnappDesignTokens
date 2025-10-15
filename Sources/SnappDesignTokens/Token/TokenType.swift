@@ -28,6 +28,10 @@ public struct TokenType: RawRepresentable, Codable, Sendable, Equatable, Hashabl
         self.rawValue = rawValue
     }
 
+    /// Creates a new instance by decoding from the given decoder.
+    ///
+    /// - Parameter decoder: The decoder to read data from.
+    /// - Throws: An error if decoding fails.
     public init(from decoder: any Decoder) throws {
         self.rawValue = try .init(from: decoder)
     }
