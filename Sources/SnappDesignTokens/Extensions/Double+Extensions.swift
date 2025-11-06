@@ -8,6 +8,6 @@ import Foundation
 
 extension Double {
     func roundedToFourDecimalPlaces() -> Double {
-           return (self * 10_000).rounded() / 10_000
+        return (self * 10_000).rounded() / 10_000
     }
 }
