@@ -15,13 +15,13 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(url: "https://github.com/oleksiikolomiietssnapp/SwiftFormatLintPlugin.git", exact: "1.0.0")
+        .package(url: "https://github.com/Snapp-Mobile/SwiftFormatLintPlugin.git", exact: "1.0.4")
     ],
     targets: [
         .target(
             name: "SnappDesignTokens",
             plugins: [
-                .plugin(name: "SwiftFormatPlugin", package: "SwiftFormatLintPlugin")
+                .plugin(name: "Lint", package: "SwiftFormatLintPlugin")
             ]
         ),
         .target(name: "SnappDesignTokensTestUtils", dependencies: ["SnappDesignTokens"]),
