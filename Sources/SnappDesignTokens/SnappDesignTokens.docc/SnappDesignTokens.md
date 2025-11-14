@@ -3,7 +3,7 @@
 Framework for parsing and processing `DTCG` tokens.
 
 @Metadata {
-    @PageImage(purpose: icon, source:"logo")
+    @PageImage(purpose: icon, source:"logo_tokens")
 }
 
 ## Overview
@@ -21,3 +21,4 @@ A Swift library for parsing and processing [DTCG-compliant](https://www.designto
 
 ### Advanced Features
 - <doc:TokenProcessors>
+- <doc:ExpressionEvaluation>
