@@ -1,7 +1,7 @@
 <p align="center">
     <picture>
         <source
-            srcset="Sources/SnappDesignTokens/SnappDesignTokens.docc/Resources/logo~dark.png"
+            srcset="Sources/SnappDesignTokens/SnappDesignTokens.docc/Resources/logo_tokens~dark.png"
             media="(prefers-color-scheme: dark)"
         />
         <source
