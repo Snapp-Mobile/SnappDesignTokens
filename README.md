@@ -201,7 +201,7 @@ let converted = try await processor.process(token)
 
 ## Documentation
 
-For more information about the DTCG specification, visit [Design Tokens Community Group Format Specification](https://www.designtokens.org/tr/third-editors-draft/format/).
+For more information about the library, visit [Documentation page](http://ios-theming.snappmobile.io/documentation/snappdesigntokens).
 
 ## Contributing
 
