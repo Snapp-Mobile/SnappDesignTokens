@@ -11,11 +11,15 @@
         <img src="Sources/SnappDesignTokens/SnappDesignTokens.docc/Resources/logo.png" alt="SnappDesignTokens logo" width="128"/>
     </picture>
 </p>
-<p align="center">
+<div align="center">
+    
+  [![Release](https://img.shields.io/github/v/release/Snapp-Mobile/SnappDesignTokens)](https://github.com/Snapp-Mobile/SnappDesignTokens/releases)
   <img src="https://img.shields.io/badge/Platform-iOS%2016%2B%20%7C%20macOS%2013%2B-blue.svg" alt="Platform">
   <img src="https://img.shields.io/badge/Swift-6.1-orange.svg" alt="Swift">
   <img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License">
-</p>
+  
+</div>
+
 
 # SnappDesignTokens
 
