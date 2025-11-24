@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="Sources/SnappDesignTokens/SnappDesignTokens.docc/Resources/logo.png" alt="SnappDesignTokens logo" width="128"/>
+    <img src="Sources/SnappDesignTokens/SnappDesignTokens.docc/Resources/logo_tokens@3x.png" alt="SnappDesignTokens logo" width="200"/>
 </p>
 <div align="center">
     
