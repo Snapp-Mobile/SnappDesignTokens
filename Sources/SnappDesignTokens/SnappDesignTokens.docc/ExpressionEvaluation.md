@@ -4,6 +4,7 @@ Evaluate mathematical expressions in dimension token values.
 
 @Metadata {
     @PageImage(purpose: icon, source:"operators")
+    @PageColor(blue)
 }
 
 ## Overview
