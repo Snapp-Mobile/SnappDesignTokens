@@ -2,6 +2,8 @@
 
 @Metadata {
     @PageImage(purpose: icon, source:"dtcg_logo")
+    @PageColor(green)
+    
 }
 
 Parse and work with Design Tokens Community Group (DTCG) format files in Swift.

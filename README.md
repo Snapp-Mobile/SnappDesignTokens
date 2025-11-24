@@ -1,15 +1,5 @@
 <p align="center">
-    <picture>
-        <source
-            srcset="Sources/SnappDesignTokens/SnappDesignTokens.docc/Resources/logo_tokens~dark.png"
-            media="(prefers-color-scheme: dark)"
-        />
-        <source
-            srcset="Sources/SnappDesignTokens/SnappDesignTokens.docc/Resources/logo.png"
-            media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
-        />
-        <img src="Sources/SnappDesignTokens/SnappDesignTokens.docc/Resources/logo.png" alt="SnappDesignTokens logo" width="128"/>
-    </picture>
+    <img src="Sources/SnappDesignTokens/SnappDesignTokens.docc/Resources/logo_tokens@3x.png" alt="SnappDesignTokens logo" width="200"/>
 </p>
 <div align="center">
     
