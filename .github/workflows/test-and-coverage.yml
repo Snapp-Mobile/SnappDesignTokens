@@ -11,4 +11,4 @@
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: Snapp-Mobile/swift-coverage-action@platform-detection
+      - uses: Snapp-Mobile/swift-coverage-action@feature/platform-detection
