@@ -13,4 +13,4 @@
       - uses: actions/checkout@v4
       # - uses: Snapp-Mobile/swift-coverage-action@feature/platform-detection
       # - uses: Snapp-Mobile/swift-coverage-action@v1.0.1
-      - uses: Snapp-Mobile/swift-coverage-action@feature/add-error-handling-and-modular-functions
+      - uses: Snapp-Mobile/swift-coverage-action@feature/add-debug-input
